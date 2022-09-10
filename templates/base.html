@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+
+<body>
+    <div>
+        {% include 'header.html' %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% include 'footer.html' %}
+    {% include 'scripts.html' %}
+
+
+
+
+
+</body>
+
+</html>

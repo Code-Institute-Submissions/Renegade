@@ -1,3 +1,30 @@
+html {
+    height: 100%;
+}
+
 body {
-    background-color: red;
+    background: url('/media/home/hero-2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh-116px);
+
+}
+
+.navbar {
+    text-transform: uppercase;
+}
+
+.nav-col {
+    color: white !important;
+}
+
+#cart-total {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+}
+
+.hero-title {
+    margin-top: 8rem;
+    text-align: center;
+    text-transform: uppercase;
 }

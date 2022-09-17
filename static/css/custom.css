@@ -17,12 +17,6 @@ body {
     color: white !important;
 }
 
-#cart-total {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-}
-
 .hero-title {
     margin-top: 8rem;
     text-align: center;

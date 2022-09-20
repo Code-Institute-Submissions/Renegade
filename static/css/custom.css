@@ -1,74 +1,11 @@
+/* GENERAL */
 html {
     height: 100%;
 }
 
 body {
-    background: url('/media/home/hero.jpg') no-repeat center center fixed;
-    background-size: cover;
-}
-
-
-.navbar {
-    text-transform: uppercase;
-}
-
-.navbar-brand {
-    width: fit-content;
-}
-
-.navbar a {
-    color: white !important;
-}
-
-
-.intro {
-    height: 100vh;
-}
-
-.streaming-links {
-    background-color: black;
-    height: 500px;
-    width: 100%;
-}
-
-.menu div {
-    font-size: 2rem;
-    text-decoration: none;
-
-}
-
-.menu a {
-    text-decoration: none;
-    color: white;
-}
-
-
-.streaming-menu a {
-    padding: 0 50px;
-    font-size: 5rem;
-}
-
-
-.intro-3 {
     background-color: black;
     color: white;
-    height: 100vh;
-}
-
-.hero-title {
-    margin-top: 8rem;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: black;
-    z-index: -1;
 }
 
 .hr-line {
@@ -77,4 +14,76 @@ body {
 
 .breadcrumb a:hover {
     text-decoration: none;
+}
+
+
+/* NAVBAR */
+.navbar {
+    text-transform: uppercase;
+}
+
+.navbar-brand {
+    width: fit-content;
+}
+
+
+/* HERO */
+.hero {
+    height: 90vh;
+    background: url('/media/home/hero.jpg') no-repeat center center;
+}
+
+.hero-title {
+    margin-top: 8rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+/* HOME PAGE: SECTION 1 - STREAMING SECTION */
+.streaming-links {
+    margin-top: 100px;
+    background-color: black;
+    height: 100px;
+    width: 100%;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+}
+
+
+
+/* HOME PAGE: SECTION 2 - NEWSLETTER SECTION */
+
+
+
+
+/* HOME PAGE: SECTION 2 - TOUR DATES SECTION */
+.intro-3 {
+    background-color: black;
+    color: white;
+    height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* *** MEDIA QUERY *** */
+/* ------------------- */
+/* Ultra-Wide Desktop Screens */
+@media screen and (min-width: 2000px) {
+    body {
+        background-size: cover;
+    }
 }

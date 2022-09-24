@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
-
-<div class="container">
+<!-- TITLE WITH BREADCRUMB MENU -->
+<div class="container-fluid">
     <hr class="w-80 mb-1 bg-light">
     <div class="row">
         <div class="col text-center mt-3">
@@ -14,11 +13,13 @@
                     <li class="breadcrumb-item active" aria-current="page">{{ request.resolver_match.view_name }}</li>
                 </ol>
             </div>
-
-            <h2 class="logo-front text-white">TOUR DATES</h2>
+            <div class="tour-heading">
+                <h2 class="text-white">TOUR DATES</h2>
+            </div>
         </div>
     </div>
-    <div class="tour">
+    <!-- TOUR INFO -->
+    <div class="container tour text-uppercase">
         <div class="mt-5">
             <div class="tour-list">
                 {% for tour in tour %}
@@ -31,7 +32,7 @@
                     </div>
                     <div class="col-sm text-sm-right text-left mb-4">
                         <p class=""><a class="text-decoration-none text-white btn btn-info"
-                                href="https://www.ticketmaster.ie/" target="_blank">Buy Tickets</a>
+                                href="https://www.ticketmaster.ie/" target="_blank">Tickets</a>
                         </p>
                     </div>
                 </div>

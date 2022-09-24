@@ -7,7 +7,7 @@
     <div class="container h-100">
         <div class="row h-100">
             <div class="col align-self-center">
-                <h1 class="display-4 text-white text-uppercase">New Album Out: DEC 08</h1>
+                <h1 class="display-4 text-white text-uppercase">New Album Out: NOV 08</h1>
                 <button type="button" class="btn btn-light btn-lg"><a href=""
                         class="text-dark text-uppercase text-decoration:none">PRE-ORDER
                         NOW!</a></button>
@@ -66,49 +66,27 @@
 <!-- Tour Dates Section-->
 <section class="intro-3">
     <div class="container">
-        <div class="row">
-            <!-- <h3>ON TOUR</h3> -->
-            <div class="col-3 bg-primary">
-                <p></p>
-            </div>
-            <div class="col-7 bg-danger">
-                <p></p>
-            </div>
-            <div class="col-1 bg-warning">
-                <p></p>
-            </div>
-        </div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div class="row">
-            <div class="col-6 col-md-4 bg-primary">.col-6 .col-md-4</div>
-            <div class="col-6 col-md-4 bg-danger">.col-6 .col-md-4</div>
-            <div class="col-6 col-md-4 bg-warning">.col-6 .col-md-4</div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="mb-5 mt-md-5 text-white">
+        <div class="tour">
+            <div class="mt-5">
+                <div class="tour-list">
                     {% for tour in tour %}
-                    <div class="row">
-                        <div class="col-6 col-md-4 bg-primary">
+                    <div class="row my-5" id="tour-item">
+                        <div class="col-sm">
                             <p>{{ tour.date }}</p>
                         </div>
-                        <div class="col-6 col-md-4 bg-danger">
-                            <p>{{ tour.name }} || {{ tour.location }}</p>
+                        <div class="col-sm">
+                            <p><strong>{{ tour.location }}</strong> - {{ tour.venue }}</p>
                         </div>
-                        <div class="col-6 col-md-4 bg-warning">
-                            <p>></p>
+                        <div class="col-sm text-sm-right text-left mb-4">
+                            <p class=""><a class="text-decoration-none text-white btn btn-info"
+                                    href="https://www.ticketmaster.ie/" target="_blank">Buy Tickets</a>
+                            </p>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-
-
     </div>
 
 

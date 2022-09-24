@@ -68,13 +68,19 @@ body {
     height: 100vh;
 }
 
+#tour-item {
+    width: 98%;
+    margin: auto;
 
-/* tour .bg-light:last-child {
-    display: none;
-} */
+}
 
 #tour-item:not(:last-child) {
     border-bottom: 1px solid white;
+
+}
+
+.tour-list li {
+    list-style-type: none;
 }
 
 

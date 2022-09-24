@@ -6,11 +6,11 @@ from .models import Tour
 
 class TourAdmin(admin.ModelAdmin):
     list_display = (
-        'name',
         'location',
+        'venue',
         'date',
     )
-    ordering = ('-date',)
+    ordering = ('date',)
 
 
 admin.site.register(Tour, TourAdmin)

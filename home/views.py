@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from tour.models import Tour
 
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'home/index.html')
+    tour = Tour.objects.all()
+    return render(request, 'home/index.html', {"tour": tour})
+

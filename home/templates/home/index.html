@@ -88,6 +88,27 @@
             <div class="col-6 col-md-4 bg-warning">.col-6 .col-md-4</div>
         </div>
 
+        <div class="row">
+            <div class="col">
+                <div class="mb-5 mt-md-5 text-white">
+                    {% for tour in tour %}
+                    <div class="row">
+                        <div class="col-6 col-md-4 bg-primary">
+                            <p>{{ tour.date }}</p>
+                        </div>
+                        <div class="col-6 col-md-4 bg-danger">
+                            <p>{{ tour.name }} || {{ tour.location }}</p>
+                        </div>
+                        <div class="col-6 col-md-4 bg-warning">
+                            <p>></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 

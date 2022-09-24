@@ -69,6 +69,14 @@ body {
 }
 
 
+/* tour .bg-light:last-child {
+    display: none;
+} */
+
+#tour-item:not(:last-child) {
+    border-bottom: 1px solid white;
+}
+
 
 
 

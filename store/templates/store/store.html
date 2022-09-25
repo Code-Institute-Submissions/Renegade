@@ -6,7 +6,8 @@
 <div class="overlay"></div>
 <div class="container-fluid">
     <hr class="w-80 mb-1 bg-light">
-    <div class="row">
+    <!-- BREADCRUMB NAVIGATION -->
+    <div class="row" aria-label="breadcrumb">
         <div class="col text-center mt-3">
             <div class="col text-center mt-3 d-flex justify-content-center">
                 <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
@@ -14,12 +15,13 @@
                     <li class="breadcrumb-item active" aria-current="page">{{ request.resolver_match.view_name }}</li>
                 </ol>
             </div>
-
+            <!-- STORE HEADING -->
             <h2 class="logo-front text-white">THE OFFICIAL RENEGADE STORE</h2>
         </div>
     </div>
+    <!-- STORE PRODUCT INFO -->
     <div class="row">
-        <div class="product-container col-10 offset-1">
+        <div class="product-container col-10 offset-1 text-dark">
             <div class="row mt-1 mb-2"></div>
             <div class="row">
                 {% for product in store %}

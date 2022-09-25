@@ -7,3 +7,28 @@
 
 
 </div>
+
+
+
+
+
+
+<div class="row">
+    <div>
+        {% for member in member %}
+        <div class="col-4">
+            <img class="" src="" alt="{{ member.name }}">
+        </div>
+        <div class="col-8">
+            <div class="col-sm">
+                <p>{{ member.name }}</p>
+                <p><strong>{{ member.birthdate }}</strong>({{ member.age }})</p>
+                <p><strong>{{ member.town_or_city }}</strong> - {{ member.country }}</p>
+                <p><strong>{{ member.age }}</strong></p>
+                <p>{{ member.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- TITLE WITH BREADCRUMB MENU -->
+<div class="container-fluid">
+    <hr class="w-80 mb-1 bg-light">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <div class="col text-center mt-3 d-flex justify-content-center">
+                <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
+                    <li class="breadcrumb-item"><a class="text-light" href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ request.resolver_match.view_name }}</li>
+                </ol>
+            </div>
+            <div class="tour-heading">
+                <h2 class="text-white">ABOUT</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- MEMBER INFO -->
+    <div class="container">
+        <div class="row">
+            {% for member in member %}
+            <div class="col-12 col-md-6 offset-lg2">
+                <img class="img-fluid" src="/media/no-img.jpg" alt="{{ member.name }}">
+            </div>
+            <div class="col-12 col-md-6 offset-lg2">
+                <div class="col-sm">
+                    <p>{{ member.name }}</p>
+                    <p><strong>{{ member.birthdate }}</strong> Age: ({{ member.age }})</p>
+                    <p><strong>{{ member.town_or_city }}</strong> - {{ member.country }}</p>
+                    <p>{{ member.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

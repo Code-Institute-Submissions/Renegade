@@ -9,7 +9,8 @@ class MemberAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'age',
-        'instrument',
+        'town_or_city',
+        'country',
     )
 
 

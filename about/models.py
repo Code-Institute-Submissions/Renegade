@@ -21,8 +21,8 @@ class Member(models.Model):
     birthdate = models.DateField(blank=True, null=True)
     town_or_city = models.CharField(max_length=40, null=False, blank=False)
     country = models.CharField(max_length=40, null=False, blank=False)
-    genre = models.ForeignKey('Genre', null=True, blank=True, on_delete=models.SET_NULL)
-    instrument = models.ForeignKey('Instrument', null=True, blank=True, on_delete=models.SET_NULL)
+    genre = models.ManyToManyField(Genre)
+    instrument = models.ManyToManyField(Instrument)
     description = models.TextField(default=False)
     image = models.ImageField(null=True, blank=True)
 

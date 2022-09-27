@@ -20,14 +20,14 @@
     </div>
 
     <!-- MEMBER INFO -->
-    <div class="container">
-        <div class="row">
-            {% for member in member %}
-            <div class="col-12 col-md-6 offset-lg2">
+    <div class="container w-100">
+        {% for member in member %}
+        <div class="row member">
+            <div class="col-12 col-md-6 offset-lg2 align-self-center">
                 <img class="img-fluid" src="/media/no-img.jpg" alt="{{ member.name }}">
             </div>
             <div class="col-12 col-md-6 offset-lg2">
-                <div class="col-sm">
+                <div class="col-sm ">
                     <p>{{ member.name }}</p>
                     <p><strong>{{ member.birthdate }}</strong> Age: ({{ member.age }})</p>
                     <p><strong>{{ member.town_or_city }}</strong> - {{ member.country }}</p>

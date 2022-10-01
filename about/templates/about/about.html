@@ -20,22 +20,43 @@
     </div>
 
     <!-- MEMBER INFO -->
-    <div class="container w-100">
+    <!-- <div class="container-fluid"> -->
+    <div class="row member">
         {% for member in member %}
-        <div class="row member">
-            <div class="col-12 col-md-6 offset-lg2 align-self-center">
-                <img class="img-fluid" src="/media/no-img.jpg" alt="{{ member.name }}">
+        <div class="row my-5">
+            {% if member.image %}
+            <div class="col-12 col-md-6 offset-lg2 profile">
+                <img class="img-fluid" src="{{ member.image.url }}" alt="{{ member.name }}">
             </div>
+            {% else %}
+            <div class="col-12 col-md-6 offset-lg2 profile">
+                <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ member.name }}">
+            </div>
+            {% endif %}
             <div class="col-12 col-md-6 offset-lg2">
                 <div class="col-sm ">
-                    <p>{{ member.name }}</p>
-                    <p><strong>{{ member.birthdate }}</strong> Age: ({{ member.age }})</p>
-                    <p><strong>{{ member.town_or_city }}</strong> - {{ member.country }}</p>
+                    <p><strong>Name: </strong>{{ member.name }}</p>
+                    <p><strong>Born: </strong>{{ member.birthdate }} Age: ({{ member.age }})</p>
+                    <p><strong>Lived in: </strong>{{ member.town_or_city }} - {{ member.country }}</p>
+
+                    <p><strong>Genre: </strong>
+                        {% for genre in member.genre.all %}
+                        #{{ genre }}
+                        {% endfor %}
+                    </p>
+                    {% for instrument in member.instrument.all %}
+                    <p><strong>Role: </strong> {{ instrument }}</p>
+                    {% endfor %}
+
+
+                    <!-- <p>{{ member.genre.all }}</p>
+                    <p>{{ member.instrument.all }}</p> -->
                     <p>{{ member.description }}</p>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
+    <!-- </div> -->
 </div>
 {% endblock %}

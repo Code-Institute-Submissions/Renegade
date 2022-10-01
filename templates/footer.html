@@ -1,39 +1,26 @@
 {% load static %}
-<!-- Page Footer-->
+<!-- FOOTER-->
 <footer class="main-footer" id="footer">
-    <div class="container d-flex justify-content-center">
-        <div class="row">
-            <div class="text-center">
-                <div class="logo">
-                    <h6 class="text-white">Guitar <i class="fa fa-music"></i> Portal</h6>
-                </div>
-                <div class="contact-details">
-                    <p>Email: <a href="mailto:guitarportaldublin@gmail.com">guitarportaldublin@gmail.com</a></p>
-                    <ul class="social-menu">
-                        <li class="list-inline-item"><a href="https://facebook.com" target="_blank"><i
-                                    class="fa fa-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="https://twitter.com" target="_blank"><i
-                                    class="fa fa-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="https://instagram.com" target="_blank"><i
-                                    class="fa fa-instagram"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="https://youtube.com" target="_blank"><i
-                                    class="fa fa-youtube"></i></a>
-                        </li>
-                    </ul>
+    <div class="container text-center">
+        <h6 class="text-white text-uppercase">Get Connected</h6>
+        <div class="d-flex justify-content-center  text-center footer-menu">
+            <a href="https://music.apple.com/us/listen-now" target="_blank"><i class="fa-solid fa-music"></i></a>
+            <a href="https://open.spotify.com/" target="_blank"><i class="fa-brands fa-spotify"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"><i class="fa-regular fa-circle-play"></i></a>
+            <a href="https://music.amazon.com/" target="_blank"><i class="fa-brands fa-amazon"></i></a>
+            <a href="https://www.deezer.com/en/" target="_blank"><i class="fa-brands fa-deezer"></i></a>
+        </div>
+        <div class="copyrights">
+            <div class="container d-flex justify-content-center">
+                <div class="row">
+                    <div>
+                        <a class="footer-brand" href="{% url 'home' %}"><img src="/media/home/renegade-logo.png" alt=""
+                                width="300px"></a>
+                        <p class="text-center">&copy; 2022. All rights reserved. </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="copyrights">
-        <div class="container d-flex justify-content-center">
-            <div class="row">
-                <div>
-                    <p>&copy; 2022. All rights reserved. Guitar <i class="fa fa-music"></i> Portal</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </footer>

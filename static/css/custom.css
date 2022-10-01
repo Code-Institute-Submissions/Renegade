@@ -114,10 +114,35 @@ body {
 
 /* ABOUT PAGE: MEMBER SECTION */
 .member {
-    margin: 150px 0;
+    margin: 150px auto;
+    width: 70%;
+}
+
+.profile {
+    max-width: 600px;
+
 }
 
 
+
+/* SONG SECTION */
+
+.new-song iframe {
+    height: fit-content;
+}
+
+
+/* FOOTER */
+
+.main-footer {
+    margin: 50px 0;
+}
+
+.footer-menu a {
+    text-decoration: none;
+    color: white;
+    margin: 15px 30px;
+}
 
 
 

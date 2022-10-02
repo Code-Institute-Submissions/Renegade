@@ -27,6 +27,8 @@ body {
 }
 
 
+
+
 /* HERO */
 .hero {
     height: 90vh;
@@ -91,7 +93,6 @@ body {
 
 
 /* HOME PAGE: SECTION 2 - TOUR DATES SECTION */
-
 .tour {
     margin-top: 100px;
 }
@@ -125,8 +126,7 @@ body {
 
 
 
-/* SONG SECTION */
-
+/* NEW SONG SECTION */
 .new-song iframe {
     height: fit-content;
 }

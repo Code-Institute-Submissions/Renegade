@@ -28,7 +28,7 @@
             </ul>
         </div>
         <div class="search-bar mx-auto">
-            <form method="GET" action="" class="form-inline my-2 my-lg-0 m-auto">
+            <form method="GET" action="{% url 'store' %}" class="form-inline my-2 my-lg-0 m-auto">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn my-2 my-sm-0 pl-0 d-none d-sm-block" type="submit">
                     <span class="icon btn rounder-0 text-white">
@@ -66,12 +66,15 @@
                     <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                         href="#">
                         <div class="">
-                            <div><i class="fas fa-shopping-bag fa-lg text-white"></i></div>
+                            <div class="d-flex">
+                                <div><i class="fas fa-shopping-bag fa-lg text-white"></i></div><span
+                                    class="badge badge-red">0</span>
+                            </div>
                             <p class="my-0 text-white">
                                 {% if grand_total %}
                                 ${{ grand_total|floatformat:2 }}
                                 {% else %}
-                                0.00 €
+                                0.00€
                                 {% endif %}
                             </p>
                         </div>

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- TITLE WITH BREADCRUMB MENU -->
+<div class="container-fluid">
+    <hr class="w-80 mb-1 bg-light">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <div class="col text-center mt-3 d-flex justify-content-center">
+                <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
+                    <li class="breadcrumb-item"><a class="text-light" href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ request.resolver_match.view_name }}</li>
+                </ol>
+            </div>
+            <div class="tour-heading">
+                <h2 class="text-white">VIDEOS</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- STORE PRODUCT INFO -->
+    <div class="row">
+        <div class="videos-container col-10 offset-1 text-dark">
+            <div class="row mt-1 mb-2"></div>
+            <div class="row">
+                {% for song in song %}
+                <div class="col-sm-6 col-md-6 col-lg-4  col-xl-4 my-4">
+                    <div class="card h-100">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="{{ song.url }}"></iframe>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

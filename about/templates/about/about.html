@@ -37,7 +37,7 @@
                 <div class="col-sm ">
                     <p><strong>Name: </strong>{{ member.name }}</p>
                     <p><strong>Born: </strong>{{ member.birthdate }} Age: ({{ member.age }})</p>
-                    <p><strong>Lived in: </strong>{{ member.town_or_city }} - {{ member.country }}</p>
+                    <p><strong>Location: </strong>{{ member.town_or_city }} - {{ member.country }}</p>
 
                     <p><strong>Genre: </strong>
                         {% for genre in member.genre.all %}

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'store',
     'tour',
     'about',
+    'songs',
 ]
 
 MIDDLEWARE = [

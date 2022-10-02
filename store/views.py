@@ -9,7 +9,7 @@ from .models import *
 def store(request):
     """ A view to show our Store page, including sorting and search queries """
 
-    store = Product.objects.all()
+    products = Product.objects.all()
     query = None
 
     if request.GET:
@@ -23,8 +23,8 @@ def store(request):
             store = store.filter(queries)
 
     context = {
-        'store': store,
-        'search-term': query,
+        'products': products,
+        'search_term': query,
     }
 
     return render(request, 'store/store.html', context)

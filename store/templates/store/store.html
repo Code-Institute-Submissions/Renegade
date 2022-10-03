@@ -19,7 +19,58 @@
             <h2 class="logo-front text-white">THE OFFICIAL RENEGADE STORE</h2>
         </div>
     </div>
-    <!-- STORE PRODUCT INFO -->
+
+
+    <!-- <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+        <a href="{% url 'store' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+        <a href="{% url 'store' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
+        <a href="{% url 'store' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
+        <a href="{% url 'store' %}" class="dropdown-item">All Products</a>
+    </div> -->
+
+
+    <div>
+        <div class="row mt-1 mb-2">
+            <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                <div class="sort-select-wrapper w-50">
+
+
+                    <!-- <div class="header-bottom-set dropdown">
+                        <button class="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">Default</button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="">sdadasd</a>Name (A-Z)</li>
+                            <li><a class="dropdown-item" href="">asdasd</a>Name (Z-A)</li>
+                            <li><a class="dropdown-item" href=""></a>Price, High to Low</li>
+                            <li><a class="dropdown-item" href=""></a>Price, Low to High</li>
+                            <li><a class="dropdown-item" href=""></a>Sort By New</li>
+                            <li><a class="dropdown-item" href=""></a>Sort By Old</li>
+                        </ul>
+                    </div> -->
+
+                    <div class="dropdown">
+                        <button class="custom-select custom-select-sm rounded-0" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort Items By ...
+                        </button>
+                        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{% url 'store' %}?sort=name&direction=asc">Name (A-Z)</a>
+                            <a class="dropdown-item" href="{% url 'store' %}?sort=name&direction=desc">Name (Z-A)</a>
+                            <a class="dropdown-item" href="{% url 'store' %}?sort=price&direction=desc">Price, High to
+                                Low</a>
+                            <a class="dropdown-item" href="{% url 'store' %}?sort=price&direction=asc">Price, Low to
+                                High</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 order-md-first">
+                <p class="text-muted mt-3 text-center text-md-left">
+                    {{ products|length }} Products{% if search_term %} found for
+                    <strong>"{{ search_term }}"</strong>{% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="product-container col-10 offset-1 text-dark">
             <div class="row mt-1 mb-2"></div>
@@ -54,4 +105,42 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+
+{% block postloadjs %}
+{{ block.super }}
+
+<script>
+    console.log("THIS IS A TEST")
+</script>
+
+<script type="text/javascript">
+    $('.btt-link').click(function (e) {
+        window.scrollTo(0, 0)
+    })
+</script>
+
+<script type="text/javascript">
+    $('#sort-selector').change(function () {
+        var selector = $(this);
+        var currentUrl = new URL(window.location);
+
+        var selectedVal = selector.val();
+        if (selectedVal != "reset") {
+            var sort = selectedVal.split("_")[0];
+            var direction = selectedVal.split("_")[1];
+
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+
+            window.location.replace(currentUrl);
+        } else {
+            currentUrl.searchParams.delete("sort");
+            currentUrl.searchParams.delete("direction");
+
+            window.location.replace(currentUrl);
+        }
+    })
+</script>
 {% endblock %}

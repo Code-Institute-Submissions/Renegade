@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cart_tools %}
 
 {% block content %}
 <!-- TITLE WITH BREADCRUMB MENU -->
@@ -62,10 +63,55 @@
                                 <p class="my-0">€{{ item.product.price }}</p>
                             </td>
                             <td class="py-3">
-                                <p class="my-0">{{ item.quantity }}</p>
+
+
+
+
+
+                                <form class="form update-form" method="POST"
+                                    action="{% url 'adjust_cart' item.item_id %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-sm text-white rounded-0"
+                                                    data-item_id="{{ item.item_id }}"
+                                                    id="decrement-qty_{{ item.item_id }}">
+                                                    <span>
+                                                        <i class="fas fa-minus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control form-control-sm qty_input" type="number"
+                                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-sm text-white rounded-0"
+                                                    data-item_id="{{ item.item_id }}"
+                                                    id="increment-qty_{{ item.item_id }}">
+                                                    <span>
+                                                        <i class="fas fa-plus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            {% if item.product.has_sizes %}
+                                            <input type="hidden" name="product_size" value="{{ item.size }}">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                                <a class="update-link text-info cursor-pointer"><small>Update</small></a>
+                                <a class="remove-item text-danger float-right cursor-pointer"
+                                    id="remove_{{ item.item_id }}"
+                                    data-product_size="{{ item.size }}"><small>Remove</small></a>
+
+
+
                             </td>
                             <td class="py-3">
-                                <p class="my-0">€{{ item.product.price }}</p>
+                                <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                             </td>
                         </tr>
                         {% endfor %}
@@ -97,7 +143,6 @@
 
                     </table>
                 </div>
-                {{ cart_items }}
                 {% else %}
                 <p class="lead mb-5">Your bag is empty.</p>
                 <a href="{% url 'store' %}" class="btn btn-light rounded-0 btn-lg">
@@ -112,4 +157,10 @@
     </div>
 
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'store/includes/product_quantity_script.html' %}
+{% include 'store/includes/update_delete_cart_item.html' %}
 {% endblock %}

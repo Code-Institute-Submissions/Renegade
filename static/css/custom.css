@@ -164,6 +164,10 @@ body {
     cursor: pointer;
 }
 
+.no-delivery {
+    text-decoration: dotted;
+}
+
 
 
 /* ------------------------------- bootstrap toasts */
@@ -234,6 +238,10 @@ body {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.toast-body {
+    color: black;
 }
 
 

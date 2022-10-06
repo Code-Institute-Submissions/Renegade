@@ -125,7 +125,8 @@
 
 
                                 {% if total >= free_delivery_threshold %}
-                                <h6 class="no-delivery">Delivery: {{ sample_delivery_data|floatformat:2 }}</h6>
+                                <h6><del class="no-delivery">Delivery: {{ sample_delivery_data|floatformat:2 }}</del>
+                                </h6>
                                 <h6>FREE</h6>
                                 {% else %}
                                 <p class="mb-1 text-danger">

@@ -165,7 +165,7 @@ body {
 }
 
 .no-delivery {
-    text-decoration: dotted;
+    text-decoration-style: double;
 }
 
 

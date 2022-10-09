@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Order, OrderItem
 
 # Register your models here.
 
@@ -17,7 +17,7 @@ class OrderAdmin(admin.ModelAdmin):
                        'delivery_cost', 'order_total',
                        'grand_total',)
 
-    fields = ('customer','order_number', 'date', 'full_name',
+    fields = ('order_number', 'date', 'full_name',
               'email', 'phone_number', 'country',
               'postcode', 'town_or_city', 'street_address1',
               'street_address2', 'county', 'delivery_cost',
@@ -29,32 +29,5 @@ class OrderAdmin(admin.ModelAdmin):
 
     ordering = ('-date',)
 
+
 admin.site.register(Order, OrderAdmin)
-
-
-
-
-
-
-
-
-# class OrderAdmin(admin.ModelAdmin):
-#     readonly_fields = (
-#         'customer',
-#         'order_number',
-#         'full_name',
-#         'date',
-#         'country',
-#         'date',
-#     )
-
-# class OrderItemAdmin(admin.ModelAdmin):
-#     list_display = (
-#         'order',
-#         'product',
-#         'quantity',
-#     )
-
-
-# admin.site.register(Order, OrderAdmin)
-# admin.site.register(OrderItem, OrderItemAdmin)

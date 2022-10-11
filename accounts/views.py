@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import UserAccount
 from .forms import UserAccountForm
 
 from checkout.models import Order
 
-
+@login_required
 def account(request):
     """ Display the user's account. """
     account = get_object_or_404(UserAccount, user=request.user)
@@ -16,8 +17,10 @@ def account(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Account updated successfully')
-
-    form = UserAccountForm(instance=account)
+        else:
+            messages.error(request, 'Update failed. Please ensure the form is valid.')
+    else:
+        form = UserAccountForm(instance=account)
     orders = account.orders.all()
 
     template = 'accounts/account.html'
@@ -29,7 +32,7 @@ def account(request):
 
     return render(request, template, context)
 
-
+@login_required
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 

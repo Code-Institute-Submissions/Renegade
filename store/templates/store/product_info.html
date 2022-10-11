@@ -103,6 +103,17 @@
                             {% endwith %}
                         </div>
                     </form>
+                    {% if request.user.is_superuser %}
+                    <div class="d-flex justify-content-md-start">
+                        <div>
+                            <a class="btn mt-5 text-white" href="{% url 'edit_product' product.id %}">Edit</a>
+                        </div>
+                        <div>
+                            <a class="btn mt-5 text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

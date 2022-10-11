@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cart_tools %}
+
+
+{% block content %}
+<div class="container-fluid">
+
+    <hr class="w-80 mb-1 bg-light">
+    <!-- BREADCRUMB NAVIGATION -->
+    <div class="row" aria-label="breadcrumb">
+        <div class="col text-center mt-3 d-flex justify-content-center">
+            <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
+                <li class="breadcrumb-item"><a class="text-light" href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ request.resolver_match.view_name }}</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="tour-heading text-center text-uppercase">
+        <h2 class="logo-font mb-4">Product Management</h2>
+        <h5 class="text-muted">Add Tour Event</h5>
+    </div>
+
+
+
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <form method="POST" action="{% url 'add_tour_event' %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="text-right">
+                        <a class="btn btn-light rounded-0" href="{% url 'tour' %}">Cancel</a>
+                        <button class="btn btn-light rounded-0" type="submit">Add Event</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

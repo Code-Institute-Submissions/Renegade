@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <hr class="w-80 mb-1 bg-light">
+    <!-- BREADCRUMB NAVIGATION -->
+    <div class="row" aria-label="breadcrumb">
+        <div class="col text-center mt-3 d-flex justify-content-center">
+            <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
+                <li class="breadcrumb-item"><a class="text-light" href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-light" href="{% url 'about' %}">About</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ member.name }}</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- MEMBER INFO SECTION -->
+    <div class="">
+        <div class="row">
+            <H1>EDIT MEMBER</H1>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

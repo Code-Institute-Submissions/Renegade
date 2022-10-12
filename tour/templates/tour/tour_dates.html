@@ -16,8 +16,20 @@
             <div class="tour-heading">
                 <h2 class="text-white">TOUR DATES</h2>
             </div>
+
+            {% if request.user.is_superuser %}
+            <div class="my-5">
+                <button type="button" class="btn btn-warning"> <a
+                        class="text-uppercase text-decoration-none text-dark font-weight-bold"
+                        href="{% url 'add_tour_event' %}">Add Tour Event</a>
+                </button>
+
+            </div>
+            {% endif %}
         </div>
     </div>
+
+
 
     <!-- TOUR INFO -->
     <div class="container tour text-uppercase">
@@ -31,6 +43,15 @@
                     <div class="col-sm">
                         <p><strong>{{ tour.location }}</strong> - {{ tour.venue }}</p>
                     </div>
+                    {% if request.user.is_superuser %}
+                    <div class="">
+                        <small>
+                            <a class="btn text-white" href="{% url 'edit_tour_event' tour.id %}">Edit</a>
+                        </small>
+                        <small><a class="btn text-danger" href="{% url 'delete_tour_event' tour.id %}">Delete</a>
+                        </small>
+                    </div>
+                    {% endif %}
                     <div class="col-sm text-sm-right text-left mb-4">
                         <p class=""><a class="text-decoration-none text-white btn btn-info"
                                 href="https://www.ticketmaster.ie/" target="_blank">Tickets</a>

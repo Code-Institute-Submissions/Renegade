@@ -1,18 +1,17 @@
 from django import forms
+from django.forms import ModelForm
 from .models import Tour
+from django.contrib.admin import widgets
 
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class TourForm(forms.ModelForm):
+    location = forms.CharField(label='Location', widget=forms.TextInput(attrs={'placeholder':'Country, City'}))
+    venue = forms.CharField(label='Venue', widget=forms.TextInput(attrs={'placeholder':'Venue Name'}))
+    date = forms.DateField(widget=DateInput())
 
     class Meta:
         model = Tour
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        placeholders = {
-            'location': 'Country and City',
-            'venue': 'Venue Name',
-            'date': 'Date Performing',
-            'postcode': 'Postal Code',
-        }
+        fields = ['location', 'venue', 'date']

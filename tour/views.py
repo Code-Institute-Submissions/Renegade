@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -6,8 +6,6 @@ from .models import Tour
 from datetime import date
 
 from .forms import TourForm
-
-# Create your views here.
 
 
 def tour_date(request):
@@ -22,7 +20,6 @@ def tour_date(request):
 
 
 
-
 @login_required
 def add_tour_event(request):
     """Add a Tour Event to the Tour page"""
@@ -31,9 +28,9 @@ def add_tour_event(request):
         return redirect(reverse('home'))
     
     if request.method == 'POST':
-        form = TourForm(request.POST, request.FILES)
+        form = TourForm(request.POST)
         if form.is_valid():
-            tour = form.save()
+            form.save()
             messages.success(request, 'Successfully added Tour Event!')
             return redirect(reverse('tour'))
         else:
@@ -47,3 +44,48 @@ def add_tour_event(request):
     }
 
     return render(request, template, context)
+
+
+
+@login_required
+def edit_tour_event(request, tour_id):
+    """ Edit a product in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'No access! Only tour admin can do that.')
+        return redirect(reverse('tour'))
+
+    tour = get_object_or_404(Tour, pk=tour_id)
+    if request.method == 'POST':
+        form = TourForm(request.POST, instance=tour)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated tour event!')
+            return redirect(reverse('tour_info', args=[tour.id]))
+        else:
+            messages.error(request, 'Failed to update tour event. Please ensure the form is valid.')
+    else:
+        form = TourForm(instance=tour)
+        messages.info(request, f'You are editing {tour.venue}')
+
+    template = 'tour/edit_tour_event.html'
+    context = {
+        'form': form,
+        'tour': tour,
+    }
+
+    return render(request, template, context)
+
+
+
+
+@login_required
+def delete_tour_event(request, tour_id):
+    """ Delete a tour event from the Tour """
+    if not request.user.is_superuser:
+        messages.error(request, 'No access! Only tour admin can do that.')
+        return redirect(reverse('tour'))
+
+    tour = get_object_or_404(Tour, pk=tour_id)
+    tour.delete()
+    messages.success(request, 'Tour event deleted!')
+    return redirect(reverse('tour'))

@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import datetime
+from django_countries.fields import CountryField
+
 
 
 class Genre(models.Model):
@@ -20,7 +22,7 @@ class Member(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     birthdate = models.DateField(blank=True, null=True)
     town_or_city = models.CharField(max_length=40, null=False, blank=False)
-    country = models.CharField(max_length=40, null=False, blank=False)
+    country = CountryField(blank_label='Country', null=True, blank=True)
     genre = models.ManyToManyField(Genre)
     instrument = models.ManyToManyField(Instrument)
     description = models.TextField(default=False)

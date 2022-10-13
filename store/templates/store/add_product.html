@@ -27,7 +27,8 @@
 
 
     <div class="container my-5">
-        <div class="row">
+
+        <div class="row add-product-div">
             <div class="col-12 col-md-6">
                 <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -35,7 +36,8 @@
                     {% if field.name != 'image' %}
                     {{ field | as_crispy_field }}
                     {% else %}
-                    {{ field }}
+                    {{ field | safe }}
+                    {{ post.description | safe }}
                     {% endif %}
                     {% endfor %}
                     <div class="text-right">
@@ -47,6 +49,14 @@
         </div>
     </div>
 </div>
+
+<style>
+    .add-product-div {
+        width: 100w;
+    }
+</style>
+
+
 {% endblock %}
 
 {% block postloadjs %}

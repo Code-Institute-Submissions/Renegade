@@ -36,6 +36,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
     sku = models.CharField(max_length=254, null=True, blank=True)
     digital = models.BooleanField(default=False, null=True, blank=False)
+    preorder_item = models.BooleanField(default=False, null=True, blank=False)
     description = models.TextField(default=False)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)

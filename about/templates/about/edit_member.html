@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 
 {% block content %}
 <div class="container-fluid">
+
     <hr class="w-80 mb-1 bg-light">
     <!-- BREADCRUMB NAVIGATION -->
     <div class="row" aria-label="breadcrumb">
@@ -16,12 +17,41 @@
         </div>
     </div>
 
-    <!-- MEMBER INFO SECTION -->
-    <div class="">
+    <div class="tour-heading text-center text-uppercase">
+        <h2 class="logo-font mb-4">Member Management</h2>
+        <h5 class="text-muted">Edit Member</h5>
+    </div>
+
+    <div class="container my-5">
         <div class="row">
-            <H1>EDIT MEMBER</H1>
+            <div class="col-12 col-md-6">
+                <form method="POST" action="{% url 'edit_member' member.id %}" class="form mb-2"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    {% if field.name != 'image' %}
+                    {{ field | as_crispy_field }}
+                    {% else %}
+                    {{ field }}
+                    {% endif %}
+                    {% endfor %}
+                    <div class="text-right">
+                        <a class="btn btn-light rounded-0" href="{% url 'about' %}">Cancel</a>
+                        <button class="btn btn-light rounded-0" type="submit">Add Member</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    $('#new-image').change(function () {
+        var file = $('#new-image')[0].files[0];
+        $('#filename').text(`Image will be set to: ${file.name}`);
+    });
+</script>
 {% endblock %}

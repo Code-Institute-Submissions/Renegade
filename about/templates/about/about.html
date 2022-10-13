@@ -14,49 +14,47 @@
                 </ol>
             </div>
             <div class="tour-heading">
-                <h2 class="text-white">ABOUT</h2>
+                <h2 class="text-white text-uppercase">About Band</h2>
             </div>
         </div>
     </div>
+
+
+    {% if request.user.is_superuser %}
+    <div class="my-5 text-center">
+        <button type="button" class="btn btn-warning rounded-0"> <a
+                class="text-uppercase text-decoration-none text-dark font-weight-bold" href="{% url 'add_member' %}">Add
+                Member</a>
+        </button>
+        <p class="text-muted font-italic mt-3">To <strong>Edit</strong> or <strong>Delete</strong> a Member, please
+            click on a Member
+            first!</p>
+
+    </div>
+    {% endif %}
 
     <!-- MEMBER INFO -->
-    <!-- <div class="container-fluid"> -->
-    <div class="row member">
-        {% for member in member %}
-        <div class="row my-5">
+    <section id="member-section">
+
+        <div class="d-flex flex-row flex-wrap justify-content-center mt-" 5>
+            {% for member in member %}
             {% if member.image %}
-            <div class="col-12 col-md-6 offset-lg2 profile">
-                <img class="img-fluid" src="{{ member.image.url }}" alt="{{ member.name }}">
-            </div>
+            <a href="{% url 'member_info' member.id %}" class="text-decoration-none text-uppercase text-white member">
+                <img class="mt-5 mx-5 rounded-0 img-fluid member-img" src="{{ member.image.url }}"
+                    alt="{{ member.name }}">
+
+                <p class="mx-3 mt-2 text-center">{{ member.name }}</p>
+            </a>
             {% else %}
-            <div class="col-12 col-md-6 offset-lg2 profile">
-                <img class="img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ member.name }}">
-            </div>
+            <a href="{% url 'member_info' member.id %}" class="text-decoration-none text-uppercase text-white member">
+                <img class="mt-5 mx-5 rounded-0 img-fluid member-img" src="{{ MEDIA_URL }}noimage.png"
+                    alt="{{ member.name }}">
+                <p class="mx-3 mt-2 text-center">{{ member.name }}</p>
+            </a>
             {% endif %}
-            <div class="col-12 col-md-6 offset-lg2">
-                <div class="col-sm ">
-                    <p><strong>Name: </strong>{{ member.name }}</p>
-                    <p><strong>Born: </strong>{{ member.birthdate }} Age: ({{ member.age }})</p>
-                    <p><strong>Location: </strong>{{ member.town_or_city }} - {{ member.country }}</p>
 
-                    <p><strong>Genre: </strong>
-                        {% for genre in member.genre.all %}
-                        #{{ genre }}
-                        {% endfor %}
-                    </p>
-                    {% for instrument in member.instrument.all %}
-                    <p><strong>Role: </strong> {{ instrument }}</p>
-                    {% endfor %}
-
-
-                    <!-- <p>{{ member.genre.all }}</p>
-                    <p>{{ member.instrument.all }}</p> -->
-                    <p>{{ member.description }}</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-    <!-- </div> -->
-</div>
-{% endblock %}
+
+    </section>
+    {% endblock %}

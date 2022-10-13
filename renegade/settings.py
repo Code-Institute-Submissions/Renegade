@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_summernote',
     'home',
     'accounts',
     'store',
@@ -94,6 +95,45 @@ TEMPLATES = [
 
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        # Change editor size
+        'width': '100%',
+        'height': '480',
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+# SUMMERNOTE_THEME = 'bs4'
+
+# X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 AUTHENTICATION_BACKENDS = [

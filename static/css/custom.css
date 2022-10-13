@@ -26,6 +26,11 @@ body {
     width: fit-content;
 }
 
+.admin-title {
+    color: #8a232d;
+    letter-spacing: 15px;
+    font-size: 15px;
+}
 
 
 
@@ -114,13 +119,20 @@ body {
 
 
 /* ABOUT PAGE: MEMBER SECTION */
-.member {
-    margin: 150px auto;
-    width: 70%;
+
+
+#member-section {
+    /* height: 100vh; */
 }
 
-.profile {
-    max-width: 600px;
+.member-img {
+    max-width: 300px;
+    margin: 0 10%;
+}
+
+.member:hover {
+    transform: scale(1.1);
+    transition: 0.5s ease transform;
 
 }
 
@@ -204,6 +216,25 @@ body {
     /* color: #17a2b8; */
     /* text-info */
 }
+
+
+
+
+
+
+/* ABOUT SECTION */
+/* Band Members */
+
+/* .row-spacing {
+    width: 98%;
+    margin: auto;
+} */
+
+
+
+
+
+
 
 
 

@@ -13,21 +13,21 @@
             <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
                 <li class="breadcrumb-item"><a class="text-light" href="{% url 'home' %}">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-light" href="{% url 'store' %}">Store</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ request.resolver_match.view_name }}</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
             </ol>
         </div>
     </div>
 
     <div class="tour-heading text-center text-uppercase">
-        <h2 class="logo-font mb-4">Product Management</h2>
+        <h2 class="logo-font mb-4">Store Management</h2>
         <h5 class="text-muted">Edit Product</h5>
     </div>
 
 
 
 
-    <div class="container my-5">
-        <div class="row">
+    <div class="my-5">
+        <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-6">
                 <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2"
                     enctype="multipart/form-data">

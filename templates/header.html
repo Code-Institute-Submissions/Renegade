@@ -7,17 +7,73 @@
     </button>
 
     <!-- NAV MAIN MENU -->
+    <!-- PAGE ADMINISTRATOR -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% if request.user.is_superuser %}
+        <div class="admin-navbar">
+            <ul class="navbar-nav">
+                <!-- HOME -->
+                <li class="btn-group nav-item"><a class="nav-link text-white" href="{% url 'home' %}">Home</a>
+                </li>
+                <!-- STORE | ADMIN -->
+                <li class="btn-group nav-item dropdown"><a class="nav-link text-white"
+                        href="{% url 'store' %}">Store</a>
+                    <button type="button" class="chevron bg-transparent text-white sdropdown-toggle-split out"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-chevron-down d-none d-lg-block"></i>
+                        <i class="fas fa-chevron-right d-md-block d-lg-none"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item text-warning" href="{% url 'add_product' %}">Add Product</a>
+                    </div>
+                </li>
+                <!-- TOUR | ADMIN -->
+                <li class="btn-group nav-item"><a class="nav-link text-white" href="{% url 'tour' %}">Tour</a>
+                    <button type="button" class="chevron bg-transparent text-white sdropdown-toggle-split out"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-chevron-down d-none d-lg-block"></i>
+                        <i class="fas fa-chevron-right d-md-block d-lg-none"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item text-warning" href="{% url 'add_tour_event' %}">Add Tour Event</a>
+                    </div>
+                </li>
+                <!-- ABOUT | ADMIN -->
+                <li class="btn-group nav-item"><a class="nav-link text-white" href="{% url 'about' %}">About</a>
+                    <button type="button" class="chevron bg-transparent text-white sdropdown-toggle-split out"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-chevron-down d-none d-lg-block"></i>
+                        <i class="fas fa-chevron-right d-md-block d-lg-none"></i>
+                    </button>
+                    <div class="dropdown-menu bg-transparent">
+                        <a class="dropdown-item text-warning" href="{% url 'add_member' %}">Add Band Member</a>
+                    </div>
+                </li>
+                <!-- VIDEOS | ADMIN -->
+                <li class="btn-group nav-item"><a class="nav-link text-white" href="{% url 'videos' %}">Videos</a>
+                    <button type="button" class="chevron bg-transparent text-white sdropdown-toggle-split out"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-chevron-down d-none d-lg-block"></i>
+                        <i class="fas fa-chevron-right d-md-block d-lg-none"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item text-warning" href=""></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        {% else %}
+        <!-- GUESTS OR REGULAR USERS -->
         <div class="navbar-nav">
-            <ul class="navbar-nav mr-auto flex">
+            <ul class="navbar-nav mr-auto flex navbar-standard">
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'store' %}">Store</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'tour' %}">Tour Dates</a>
+                    <a class="nav-link text-white" href="{% url 'tour' %}">Tour</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'about' %}">About</a>
@@ -27,6 +83,7 @@
                 </li>
             </ul>
         </div>
+        {% endif %}
         <div class="search-bar mx-auto">
             <form method="GET" action="{% url 'store' %}">
                 <div class="input-group w-100">
@@ -44,22 +101,18 @@
         </div>
         <div>
             <ul class="navbar-nav list-inline">
-                <li class="nav-item dropdown w-25 mr-3">
+                <!-- NAV LOGIN/ACCOUNT MENU -->
+                <li class="nav-item dropdown w-25 mr-3 account">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div><i class="fas fa-user fa-lg text-white"></i></div>
                     </a>
-                    <!-- NAV LOGIN/ACCOUNT MENU -->
                     <div class="dropdown-menu" style="right: 0; left: auto;" aria-labelledby="account-options">
                         {% if request.user.is_authenticated %}
-                        <p class="dropdown-item">{{ user.username }}</p>
+                        <p class="text-center mt-2">Logged in as: <strong>{{ user.username }}</strong></p>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'account' %}">My Account</a>
                         <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                        {% if request.user.is_superuser %}
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Management</a>
-                        {% endif %}
                         {% else %}
                         <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
                         <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
@@ -68,18 +121,18 @@
                 </li>
                 <!-- BASKET -->
                 <li class="list-inline-item basket">
-                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link align-center"
                         href="{% url 'cart' %}">
-                        <div class="">
-                            <div class="d-flex">
-                                <div><i class="fas fa-shopping-bag fa-lg text-white"></i></div><span
-                                    class="badge badge-red">{{ product_count }}</span>
+                        <div class="shopping-cart">
+                            <div class="d-flex xxl-justify-content-center">
+                                <div><i class="fa-solid fa-cart-shopping text-white"></i></div>
+                                {% if grand_total %}
+                                <span class="badge">{{ product_count }}</span>
+                                {% endif %}
                             </div>
-                            <p class="my-0 text-white">
+                            <p class="my-0">
                                 {% if grand_total %}
                                 ${{ grand_total|floatformat:2 }}
-                                {% else %}
-                                0.00€
                                 {% endif %}
                             </p>
                         </div>

@@ -12,7 +12,7 @@
             <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
                 <li class="breadcrumb-item"><a class="text-light" href="{% url 'home' %}">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-light" href="{% url 'about' %}">About</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ member.name }}</li>
+                <li class="breadcrumb-item active" aria-current="page">Add Band Member</li>
             </ol>
         </div>
     </div>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="container my-5">
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-6">
                 <form method="POST" action="{% url 'add_member' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}

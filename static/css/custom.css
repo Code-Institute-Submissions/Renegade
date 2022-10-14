@@ -18,8 +18,33 @@ body {
 
 
 /* NAVBAR */
+
+.admin-navbar a:hover,
+.navbar-standard a:hover {
+    color: #5bc0de !important;
+    transform: scale(1.05);
+    transition: 0.5s ease transform;
+}
+
+
+
 .navbar {
     text-transform: uppercase;
+}
+
+.nav-link {
+    text-transform: uppercase;
+}
+
+
+.btn-group {
+    padding-right: 20px;
+}
+
+
+.btn-group,
+button {
+    border-style: none;
 }
 
 .navbar-brand {
@@ -31,6 +56,56 @@ body {
     letter-spacing: 15px;
     font-size: 15px;
 }
+
+
+.admin-navbar .dropdown-menu {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+}
+
+.admin-navbar .dropdown-menu:hover {
+    background-color: transparent;
+
+}
+
+.admin-navbar .dropdown-menu a:hover {
+    background-color: transparent;
+    transform: scale(1.05);
+    transition: 4s ease transform;
+}
+
+.account .dropdown-menu {
+    background-color: #ffc107;
+    border-radius: 0;
+    padding: 0;
+}
+
+.account .dropdown-menu a,
+.account .dropdown-menu p {
+    background-color: transparent;
+}
+
+.account .dropdown-menu a:hover {
+    transform: scale(1.05);
+    transition: 0.5s ease transform;
+    font-weight: 700;
+}
+
+.account .dropdown-menu a:active {
+    color: #000;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -411,5 +486,23 @@ body {
 @media screen and (min-width: 2000px) {
     body {
         background-size: cover;
+    }
+}
+
+
+
+
+@media screen and (min-width: 2000px) {
+    body {
+        background-size: cover;
+    }
+}
+
+
+
+@media screen and (min-width: 992px) {
+    .chevron {
+        margin: 0;
+        padding: 0;
     }
 }

@@ -42,7 +42,6 @@ def add_tour_event(request):
     context = {
         'form': form,
     }
-
     return render(request, template, context)
 
 
@@ -51,7 +50,7 @@ def add_tour_event(request):
 def edit_tour_event(request, tour_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:
-        messages.error(request, 'No access! Only tour admin can do that.')
+        messages.error(request, 'No access! Only site admin can do that.')
         return redirect(reverse('tour'))
 
     tour = get_object_or_404(Tour, pk=tour_id)
@@ -72,7 +71,6 @@ def edit_tour_event(request, tour_id):
         'form': form,
         'tour': tour,
     }
-
     return render(request, template, context)
 
 

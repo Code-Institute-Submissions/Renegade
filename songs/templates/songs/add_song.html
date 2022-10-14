@@ -1,6 +1,5 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-
 
 {% block content %}
 <div class="container-fluid">
@@ -10,30 +9,30 @@
         <div class="col text-center mt-3 d-flex justify-content-center">
             <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
                 <li class="breadcrumb-item"><a class="text-light" href="{% url 'home' %}">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-light" href="{% url 'tour' %}">Tour</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ tour.venue }}</li>
+                <li class="breadcrumb-item"><a class="text-light" href="{% url 'videos' %}">Videos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add Song</li>
             </ol>
         </div>
     </div>
 
-    <!-- PRODUCT INFO SECTION -->
     <div class="tour-heading text-center text-uppercase">
-        <h2 class="logo-font mb-4">Tour Management</h2>
-        <h5 class="text-muted">Edit Tour Event</h5>
+        <h2 class="logo-font mb-4">Videos Management</h2>
+        <h5 class="text-muted">Add Song</h5>
     </div>
     <div class="container my-5">
         <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'edit_tour_event' %}" class="form mb-2"
-                    enctype="multipart/form-data">
+                <form method="POST" action="{% url 'add_song' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
+                    <p class="text-warning font-italic mt-5">Important! Use only <strong>EMBED</strong>URL!</p>
                     <div class="text-right">
-                        <a class="btn btn-light rounded-0" href="{% url 'tour' %}">Cancel</a>
-                        <button class="btn btn-light rounded-0" type="submit">Save</button>
+                        <a class="btn btn-light rounded-0" href="{% url 'videos' %}">Cancel</a>
+                        <button class="btn btn-light rounded-0" type="submit">Add Event</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

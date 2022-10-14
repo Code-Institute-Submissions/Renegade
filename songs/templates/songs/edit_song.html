@@ -10,26 +10,25 @@
         <div class="col text-center mt-3 d-flex justify-content-center">
             <ol class="breadcrumb text-uppercase text-center mt-3 text-justify bg-transparent">
                 <li class="breadcrumb-item"><a class="text-light" href="{% url 'home' %}">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-light" href="{% url 'tour' %}">Tour</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ tour.venue }}</li>
+                <li class="breadcrumb-item"><a class="text-light" href="{% url 'videos' %}">Videos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ song.name }}</li>
             </ol>
         </div>
     </div>
 
     <!-- PRODUCT INFO SECTION -->
     <div class="tour-heading text-center text-uppercase">
-        <h2 class="logo-font mb-4">Tour Management</h2>
-        <h5 class="text-muted">Edit Tour Event</h5>
+        <h2 class="logo-font mb-4">Videos Management</h2>
+        <h5 class="text-muted">Edit Song</h5>
     </div>
     <div class="container my-5">
         <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'edit_tour_event' %}" class="form mb-2"
-                    enctype="multipart/form-data">
+                <form method="POST" action="{% url 'edit_song' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <div class="text-right">
-                        <a class="btn btn-light rounded-0" href="{% url 'tour' %}">Cancel</a>
+                        <a class="btn btn-light rounded-0" href="{% url 'videos' %}">Cancel</a>
                         <button class="btn btn-light rounded-0" type="submit">Save</button>
                     </div>
                 </form>

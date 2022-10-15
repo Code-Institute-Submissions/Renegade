@@ -16,6 +16,11 @@ body {
     text-decoration: none;
 }
 
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
 
 /* NAVBAR */
 
@@ -49,12 +54,6 @@ button {
 
 .navbar-brand {
     width: fit-content;
-}
-
-.admin-title {
-    color: #8a232d;
-    letter-spacing: 15px;
-    font-size: 15px;
 }
 
 

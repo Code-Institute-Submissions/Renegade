@@ -8,7 +8,7 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 class TourForm(forms.ModelForm):
-    location = forms.CharField(label='Location', widget=forms.TextInput(attrs={'placeholder':'Country, City'}))
+    location = forms.CharField(label='Location', widget=forms.TextInput(attrs={'placeholder':'City, Country/State'}))
     venue = forms.CharField(label='Venue', widget=forms.TextInput(attrs={'placeholder':'Venue Name'}))
     date = forms.DateField(widget=DateInput())
 

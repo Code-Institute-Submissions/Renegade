@@ -59,7 +59,7 @@ def edit_tour_event(request, tour_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated tour event!')
-            return redirect(reverse('tour_info', args=[tour.id]))
+            return redirect(reverse('tour'))
         else:
             messages.error(request, 'Failed to update tour event. Please ensure the form is valid.')
     else:

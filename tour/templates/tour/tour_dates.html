@@ -45,9 +45,10 @@
                     {% if request.user.is_superuser %}
                     <div class="">
                         <small>
-                            <a class="btn text-white" href="{% url 'edit_tour_event' tour.id %}">Edit</a>
+                            <a class="btn text-white text-uppercase" href="{% url 'edit_tour_event' tour.id %}">Edit</a>
                         </small>
-                        <small><a class="btn text-danger" href="{% url 'delete_tour_event' tour.id %}">Delete</a>
+                        <small><a class="btn text-danger text-uppercase"
+                                href="{% url 'delete_tour_event' tour.id %}">Delete</a>
                         </small>
                     </div>
                     {% endif %}

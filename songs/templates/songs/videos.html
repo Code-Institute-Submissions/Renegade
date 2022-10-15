@@ -33,12 +33,14 @@
                         </div>
                     </div>
                     {% if request.user.is_superuser %}
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-end">
                         <div>
-                            <a class="btn btn-light text-dark" href="{% url 'edit_song' song.id %}">Edit</a>
+                            <a class="btn btn-transparent text-white text-uppercase"
+                                href="{% url 'edit_song' song.id %}">Edit</a>
                         </div>
                         <div>
-                            <a class="btn btn-danger text-dark" href="{% url 'delete_song' song.id %}">Delete</a>
+                            <a class="btn btn-transparent text-danger text-uppercase"
+                                href="{% url 'delete_song' song.id %}">Delete</a>
 
                         </div>
                     </div>

@@ -24,12 +24,13 @@
     <div class="container my-5">
         <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'edit_song' %}" class="form mb-2" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'edit_song' song.id %}" class="form mb-2"
+                    enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <div class="text-right">
-                        <a class="btn btn-light rounded-0" href="{% url 'videos' %}">Cancel</a>
-                        <button class="btn btn-light rounded-0" type="submit">Save</button>
+                        <a class="btn btn-danger text-white rounded-0" href="{% url 'videos' %}">Cancel</a>
+                        <button class="btn btn-warning text-dark font-weight-bold rounded-0" type="submit">Save</button>
                     </div>
                 </form>
             </div>

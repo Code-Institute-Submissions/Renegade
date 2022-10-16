@@ -16,11 +16,18 @@
             <div class="tour-heading">
                 <h2 class="text-white">VIDEOS</h2>
             </div>
+            {% if request.user.is_superuser %}
+            <div class="my-5">
+                <button type="button" class="btn btn-warning rounded-0"> <a
+                        class="text-uppercase text-decoration-none text-dark font-weight-bold"
+                        href="{% url 'add_song' %}">Add Song</a>
+                </button>
+            </div>
+            {% endif %}
         </div>
     </div>
 
-
-    <!-- STORE PRODUCT INFO -->
+    <!-- SONG VIDEO INFO -->
     <div class="row">
         <div class="videos-container col-10 offset-1 text-dark">
             <div class="row mt-1 mb-2"></div>

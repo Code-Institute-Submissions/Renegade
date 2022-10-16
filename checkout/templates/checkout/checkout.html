@@ -2,30 +2,12 @@
 {% load static %}
 {% load cart_tools %}
 
-
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
 {% endblock %}
 
-
-
-{% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
-</div>
-{% endblock %}
-
-
-
-
-
-
 {% block content %}
 <div class="container-fluid">
-
     <hr class="w-80 mb-1 bg-light">
     <!-- BREADCRUMB NAVIGATION -->
     <div class="row" aria-label="breadcrumb">
@@ -174,6 +156,7 @@
     </div>
 </div>
 
+<!-- LOADING STRIPE OVERLAY -->
 <div id="loading-overlay">
     <h1 class="text-light logo-font loading-spinner">
         <span class="icon">
@@ -182,8 +165,6 @@
     </h1>
 </div>
 {% endblock %}
-
-
 {% block postloadjs %}
 {{ block.super }}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}

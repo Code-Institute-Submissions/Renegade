@@ -428,24 +428,31 @@ button {
 
 /* ACCOUNT SECTION */
 
+.account-menu {
+    min-height: 80vh;
+}
+
 .order-history {
-    max-height: 416px;
+    max-height: 600px;
     /* height of profile form + submit button */
     overflow-y: auto;
 }
 
 
-#profile-update-form .form-control {
-    color: #000;
+#account-update-form .form-control {
+    color: white !important;
+    background-color: transparent;
 }
 
-#profile-update-form input::placeholder {
+#account-update-form input::placeholder {
     color: #aab7c4;
+    background-color: transparent !important;
+    font-size: 15px !important;
 }
 
 #id_default_country,
 #id_default_country option:not(:first-child) {
-    color: #000;
+    color: white !important;
 }
 
 #id_default_country option:first-child {

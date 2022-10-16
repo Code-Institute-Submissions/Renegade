@@ -43,14 +43,13 @@
                 <p><strong>Location: </strong>{{ member.town_or_city }} - {{ member.country }}</p>
                 <p><strong>Genre: </strong>
                     {% for genre in member.genre.all %}
-                    #{{ genre }}
+                    {{ genre }}
                     {% endfor %}
                 </p>
                 {% for instrument in member.instrument.all %}
                 <p><strong>Role: </strong> {{ instrument }}</p>
                 {% endfor %}
-                <p>{{ member.description }}</p>
-
+                <p>{{ member.description | safe }}</p>
                 {% if request.user.is_superuser %}
                 <div class="d-flex justify-content-md-start mt-5">
                     <div>

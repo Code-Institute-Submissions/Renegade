@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import ModelForm
+from django_summernote.widgets import SummernoteWidget
 
 from .models import *
 from store.widgets import CustomClearableFileInput
@@ -25,7 +26,7 @@ class MemberForm(forms.ModelForm):
     town_or_city = forms.CharField(label='Town/City', widget=forms.TextInput(attrs={'placeholder':'Town or City'}))
     genre = GenreField(label='Genre', queryset=Genre.objects.all(),widget=forms.CheckboxSelectMultiple)
     instrument = InstrumentField(label='Role', queryset=Instrument.objects.all(),widget=forms.CheckboxSelectMultiple)
-    description = forms.CharField(label='Member Description', widget=forms.Textarea(attrs={'placeholder': 'Write something about the member...'}))
+    description = forms.CharField(widget=SummernoteWidget)
     image = forms.ImageField(label='Member Image', required=True, widget=CustomClearableFileInput)
 
     class Meta:

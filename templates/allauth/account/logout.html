@@ -6,11 +6,9 @@
 
 {% block inner_content %}
 
-<hr class="bg-light">
-<h2 class="logo-font mb-4">{% trans "Sign Out" %}</h2>
-<hr class="bg-light">
+<h2 class="logo-font mt-5">{% trans "Sign Out" %}</h2>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<p class="text-danger">{% trans 'Are you sure you want to sign out?' %}</p>
 
 <form method="post" action="{% url 'account_logout' %}">
   {% csrf_token %}
@@ -18,7 +16,7 @@
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
   <a class="btn btn-light rounded-0" href="{% url 'home' %}">Cancel</a>
-  <button class="btn btn-light rounded-0" type="submit">{% trans 'Sign Out' %}</button>
+  <button class="btn btn-warning text-dark font-weight-bold rounded-0" type="submit">{% trans 'Sign Out' %}</button>
 </form>
 
 

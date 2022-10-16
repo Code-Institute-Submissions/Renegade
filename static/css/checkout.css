@@ -21,7 +21,6 @@
 
 }
 
-.stripe-style-input:-webkit-autofill,
 .stripe-style-input:-webkit-autofill {
     background-color: transparent;
     -webkit-box-shadow: 0 0 0 50px rgb(0, 0, 0) inset;
@@ -74,7 +73,7 @@ select option[value=""] {
     width: 100%;
     height: 100%;
     /* background: rgba(23, 162, 184, .85); */
-    background: #ffc107;
+    background: rgba(0, 128, 128, 0.836);
     z-index: 9999;
 }
 

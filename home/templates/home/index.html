@@ -8,9 +8,9 @@
     <div class="container h-100">
         <div class="row h-100">
             <div class="col align-self-center">
-                <h1 class="display-4 text-white text-uppercase">New Album Out: DEC 08</h1>
-                <button type="button" class="shop-now btn btn-lg"><a href="{% url 'store' %}"
-                        class="text-uppercase text-decoration-none text-white">Shop
+                <h1 class="display-4 text-white text-uppercase">New Album Out: <strong>DEC 08</strong></h1>
+                <button type="button" class="btn bg-warning"><a href="{% url 'store' %}"
+                        class="text-uppercase text-decoration-none text-dark font-weight-bold">Shop
                         Now!</a></button>
             </div>
         </div>
@@ -49,13 +49,21 @@
                     {% csrf_token %}
                     <div class="form-group d-flex justify-content-center">
                         <input class="subscribe-input" type="email" name="email" id="email" placeholder="Email address">
-                        <button type="submit" class="submit-btn ml-2" id="btn">Subscribe</button>
+                        <button type="submit" class="submit-btn ml-2 bg-warning" id="btn"
+                            onclick="newsMessage()">Subscribe</button>
                     </div>
                 </form>
+                <div class="news-message">
+                    <p class="text-warning text-center" id="newsletter-success">Thank you for subscribing. Please check
+                        your mailbox</p>
+                    <p class="text-danger text-center" id="newsletter-fail">Field can't be empty!</p>
+                </div>
             </div>
         </div>
-        <a class="text-center mt-5" href="">Visit on us <i class="fa-brands fa-lg fa-facebook"></i> also!
-        </a>
+        <div class="text-center mt-5">
+            <a class="text-decoration-none text-info" href="https://www.facebook.com/profile.php?id=100086604560986"
+                target="_blank">Follow us on <i class="fa-brands fa-lg fa-facebook"></i> for more info!</a>
+        </div>
     </div>
 </section>
 

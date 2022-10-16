@@ -5,9 +5,7 @@
 {% block head_title %}{% trans "Account" %}{% endblock %}
 
 {% block inner_content %}
-<hr class="bg-light">
 <h2 class="logo-front mb-4">{% trans "E-mail Addresses" %}</h2>
-<hr class="bg-light">
 {% if user.emailaddress_set.all %}
 <p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
 

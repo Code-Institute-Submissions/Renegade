@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-bcx$(im)!jvmz^jd(f&ag$ld^n(wp#6+#)cj61tc3=ut_-e13o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'songs',
     'cart',
     'checkout',
-    'crispy_forms',
+    'crispy_forms',    
 ]
 
 MIDDLEWARE = [
@@ -96,44 +96,18 @@ TEMPLATES = [
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 SUMMERNOTE_CONFIG = {
     'summernote': {
         # Change editor size
         'width': '100%',
         'height': '480',
-
     }
 }
 
 
+SUMMERNOTE_THEME = 'bs4'
 
-
-
-
-
-
-
-
-
-# SUMMERNOTE_THEME = 'bs4'
-
-# X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 AUTHENTICATION_BACKENDS = [

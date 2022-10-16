@@ -3,6 +3,18 @@ html {
     height: 100%;
 }
 
+
+
+.store-section {
+    min-height: 80vh;
+}
+
+.cart-section {
+    min-height: 60vh;
+}
+
+
+
 body {
     background-color: black;
     color: white;
@@ -20,6 +32,15 @@ body {
 .btn:active {
     outline: none !important;
     box-shadow: none;
+}
+
+.error-404 {
+    height: 100%;
+    width: 100%;
+}
+
+.error-404 h1 {
+    font-size: 5px !important;
 }
 
 /* NAVBAR */
@@ -455,6 +476,7 @@ button {
 
 .no-delivery {
     text-decoration-style: double;
+    text-decoration-color: red;
 }
 
 

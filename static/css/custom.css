@@ -154,7 +154,7 @@ button {
 /* HERO */
 .hero {
     height: 90vh;
-    background: url('/media/home/hero.jpg') no-repeat center center;
+    background: url('/static/images/hero.jpg') no-repeat center center;
 }
 
 .hero-title {

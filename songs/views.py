@@ -14,17 +14,17 @@ def song(request):
         'song': song,
     }
 
-    return render(request, 'songs/videos.html', {"song": song} )
+    return render(request, 'songs/videos.html', {"song": song})
 
 
-
+# ADD SONG TO VIDEOS PAGE
 @login_required
 def add_song(request):
     """Add a Song to Videos page"""
     if not request.user.is_superuser:
         messages.error(request, "No Access! Only site admin can do that.")
         return redirect(reverse('videos'))
-    
+
     if request.method == 'POST':
         form = SongForm(request.POST)
         if form.is_valid():
@@ -43,7 +43,7 @@ def add_song(request):
     return render(request, template, context)
 
 
-
+# EDIT SONG IN VIDEOS PAGE
 @login_required
 def edit_song(request, song_id):
     """ Edit a song in the videos section """
@@ -72,8 +72,7 @@ def edit_song(request, song_id):
     return render(request, template, context)
 
 
-
-
+# DELETE SONG FROM VIDEOS PAGE
 @login_required
 def delete_song(request, song_id):
     """ Delete a song from page videos """

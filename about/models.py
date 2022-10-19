@@ -3,7 +3,6 @@ from datetime import datetime
 from django_countries.fields import CountryField
 
 
-
 class Genre(models.Model):
     name = models.CharField(max_length=50)
 

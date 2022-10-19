@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
-{% endblock %}
 
 {% block content %}
 <div class="container">
-    <!-- -----ORDER CONFIRMATION TITLE----- -->
+    <!-- ORDER CONFIRMATION TITLE -->
     <div class="row d-flex justify-content-center">
         <div class="px-2 mt-5 text-center">
             <h2 class="logo-font mb-4">Thank You</h2>
@@ -19,7 +16,8 @@
     </div>
     <div class="row d-flex justify-content-center mt-4">
         <div class="order-confirmation-wrapper p-4 border">
-            <!------- ORDER INFO ------->
+
+            <!-- ORDER INFO -->
             <div class="row">
                 <div class="col">
                     <small class="text-muted">Order Info:</small>
@@ -42,7 +40,7 @@
                 </div>
             </div>
 
-            <!------- ORDER DETAILS ------->
+            <!-- ORDER DETAILS -->
             <div class="row mt-4">
                 <div class="col">
                     <small class="text-muted">Order Details:</small>
@@ -62,7 +60,7 @@
             </div>
             {% endfor %}
 
-            <!------- DELIVERING TO ------->
+            <!-- DELIVERING TO -->
             <div class="row mt-4">
                 <div class="col">
                     <small class="text-muted">Delivering To:</small>
@@ -141,7 +139,7 @@
                 </div>
             </div>
 
-            <!------- BILLING INFO ------->
+            <!-- BILLING INFO -->
             <div class="row mt-4">
                 <div class="col">
                     <small class="text-muted">Billing Info:</small>
@@ -176,7 +174,6 @@
             </div>
         </div>
     </div>
-
     <div class="row d-flex justify-content-center mt-2">
         {% if from_account %}
         <a href="{% url 'account' %}" class="btn btn-warning rounded-0 my-2">

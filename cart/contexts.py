@@ -3,13 +3,13 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from store.models import *
 
+
 def cart_contents(request):
 
     cart_items = []
     total = 0
     product_count = 0
     cart = request.session.get('cart', {})
-
 
     for item_id, item_data in cart.items():
         if isinstance(item_data, int):
@@ -32,7 +32,7 @@ def cart_contents(request):
                     'product': product,
                     'size': size,
                 })
-    
+
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
@@ -40,11 +40,9 @@ def cart_contents(request):
         delivery = 0
         free_delivery_delta = 0
 
-
     grand_total = delivery + total
     sample_delivery_data = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
 
-    
     context = {
         'cart_items': cart_items,
         'total': total,

@@ -37,11 +37,6 @@
                     <p class="mb-0">{{ product.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">$ {{ product.price }}</p>
                     <p class="mt-3">{{ product.description | safe }}</p>
-
-
-
-
-
                     <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
@@ -112,7 +107,6 @@
                         <div>
                             <a class="btn mt-5 text-danger text-uppercase"
                                 href="{% url 'delete_product' product.id %}">Delete</a>
-
                         </div>
                     </div>
                     {% endif %}
@@ -123,6 +117,8 @@
 </div>
 {% endblock %}
 
+
+<!-- JS FOR PRODUCT QUANTITY SCRIPT -->
 {% block postloadjs %}
 {{ block.super }}
 {% include 'store/includes/product_quantity_script.html' %}

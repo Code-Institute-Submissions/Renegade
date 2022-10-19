@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import *
 from django_summernote.admin import SummernoteModelAdmin
-# Register your models here.
-
 
 
 class CustomerAdmin(admin.ModelAdmin):
@@ -11,6 +9,7 @@ class CustomerAdmin(admin.ModelAdmin):
         'name',
         'email',
     )
+
 
 class ProductAdmin(SummernoteModelAdmin):
     list_display = (
@@ -30,8 +29,6 @@ class CategoryAdmin(admin.ModelAdmin):
         'friendly_name',
         'name',
     )
-
-
 
 
 admin.site.register(Customer, CustomerAdmin)

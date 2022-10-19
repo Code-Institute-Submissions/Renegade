@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-# Register your models here.
 
 class UserAccountAdmin(admin.ModelAdmin):
     list_display = (
@@ -11,7 +10,6 @@ class UserAccountAdmin(admin.ModelAdmin):
         'default_postcode',
         'default_country',
     )
-
 
 
 admin.site.register(UserAccount, UserAccountAdmin)

@@ -13,7 +13,6 @@ from cart.contexts import cart_contents
 import stripe
 import json
 
-# Create your views here.
 
 @require_POST
 def cache_checkout_data(request):
@@ -30,8 +29,6 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-
-
 
 
 def checkout(request):
@@ -110,7 +107,7 @@ def checkout(request):
         )
 
 
-        # Attempt to prefill the form with any info the user maintains in their profile
+# Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 account = UserAccount.objects.get(user=request.user)
@@ -142,7 +139,6 @@ def checkout(request):
     }
 
     return render(request, template, context)
-
 
 
 def checkout_success(request, order_number):

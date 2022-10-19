@@ -7,9 +7,7 @@ from .models import *
 from .forms import ProductForm
 
 
-# Create your views here.
-
-
+# STORE
 def store(request):
     """ A view to show our Store page, including sorting and search queries """
 
@@ -17,7 +15,6 @@ def store(request):
     query = None
     sort = None
     direction = None
-
 
     if request.GET:
         if 'sort' in request.GET:
@@ -33,7 +30,6 @@ def store(request):
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
 
-
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -45,7 +41,6 @@ def store(request):
 
     current_sorting = f'{sort}_{direction}'
 
-
     context = {
         'products': products,
         'search_term': query,
@@ -56,12 +51,10 @@ def store(request):
     return render(request, 'store/store.html', context)
 
 
-
 def product_info(request, product_id):
     """ A view to show product information """
 
     product = get_object_or_404(Product, pk=product_id)
-
 
     context = {
         'product': product,
@@ -70,6 +63,7 @@ def product_info(request, product_id):
     return render(request, 'store/product_info.html', context)
 
 
+# ADD PRODUCT TO THE STORE
 @login_required
 def add_product(request):
     """ Add a product to the store """
@@ -87,7 +81,7 @@ def add_product(request):
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm()
-        
+
     template = 'store/add_product.html'
     context = {
         'form': form,
@@ -96,7 +90,7 @@ def add_product(request):
     return render(request, template, context)
 
 
-
+# EDIT PRODUCT FROM THE STORE
 @login_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
@@ -126,6 +120,7 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+# DELETE PRODUCT FROM THE STORE
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """

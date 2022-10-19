@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
 from .models import UserAccount
 from .forms import UserAccountForm
-
 from checkout.models import Order
 
+
+# USER ACCOUNT PERSONAL DETAILS
 @login_required
 def account(request):
     """ Display the user's account. """
@@ -32,6 +32,8 @@ def account(request):
 
     return render(request, template, context)
 
+
+# USER ACCOUNT ORDER HISTORY SECTION
 @login_required
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)

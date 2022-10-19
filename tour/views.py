@@ -4,14 +4,14 @@ from django.contrib import messages
 
 from .models import Tour
 from datetime import date
-
 from .forms import TourForm
 
 
+# TOUR EVENTS
 def tour_date(request):
     """ A view to show our Tour page """
     tour = Tour.objects.filter(date__gte=date.today()).order_by('date')
-    
+
     context = {
         'tour': tour,
     }
@@ -19,14 +19,14 @@ def tour_date(request):
     return render(request, 'tour/tour_dates.html', context)
 
 
-
+# ADD TOUR EVENT
 @login_required
 def add_tour_event(request):
     """Add a Tour Event to the Tour page"""
     if not request.user.is_superuser:
         messages.error(request, "No Access! Only site admin can do that.")
         return redirect(reverse('home'))
-    
+
     if request.method == 'POST':
         form = TourForm(request.POST)
         if form.is_valid():
@@ -45,7 +45,7 @@ def add_tour_event(request):
     return render(request, template, context)
 
 
-
+# ADD TOUR EVENT
 @login_required
 def edit_tour_event(request, tour_id):
     """ Edit a product in the store """
@@ -74,8 +74,7 @@ def edit_tour_event(request, tour_id):
     return render(request, template, context)
 
 
-
-
+# DELETE TOUR EVENT
 @login_required
 def delete_tour_event(request, tour_id):
     """ Delete a tour event from the Tour """

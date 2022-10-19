@@ -14,7 +14,6 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ member.name }}</li>
             </ol>
         </div>
-
     </div>
 
     <!-- MEMBER INFO SECTION -->
@@ -43,7 +42,7 @@
                 <p><strong>Location: </strong>{{ member.town_or_city }} - {{ member.country }}</p>
                 <p><strong>Genre: </strong>
                     {% for genre in member.genre.all %}
-                    {{ genre }}
+                    #{{ genre }}
                     {% endfor %}
                 </p>
                 {% for instrument in member.instrument.all %}
@@ -59,7 +58,6 @@
                     <div>
                         <a class="btn btn-transparent text-danger rounded-0 text-uppercase"
                             href="{% url 'delete_member' member.id %}">Delete</a>
-
                     </div>
                 </div>
                 {% endif %}

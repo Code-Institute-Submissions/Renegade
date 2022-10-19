@@ -2,24 +2,17 @@ from django.shortcuts import render, redirect, reverse, HttpResponse, get_object
 from django.contrib import messages
 from store.models import *
 
-# Create your views here.
 
-
+# CART
 def view_cart(request):
+    """ A view that renders the cart contents page """
 
-    # if request.user.is_authenticated:
-    #     customer = request.user.customer
-    #     order, created = Order.objects.get_or_create(customer=customer, complete=False)
-    #     items = order.orderitem_set.all()
-    # else:
-    #     items = []
-
-    # context = {'items':items}
     return render(request, 'cart/cart.html')
 
 
-
+# ADD TO CART
 def add_to_cart(request, item_id):
+    """ Add a quantity of the specified product to the shopping cart """
 
     product = Product.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -28,7 +21,6 @@ def add_to_cart(request, item_id):
     if 'product_size' in request.POST:
         size = request.POST['product_size']
     cart = request.session.get('cart', {})
-
 
     if size:
         if item_id in list(cart.keys()):
@@ -53,17 +45,13 @@ def add_to_cart(request, item_id):
             cart[item_id] = quantity
             messages.success(request, f'Added {product.name} to your cart')
 
-
     request.session['cart'] = cart
     return redirect(redirect_url)
 
 
-
-
-
-
+# ADJUST IN CART
 def adjust_cart(request, item_id):
-    """Adjust the quantity of the specified product to the specified amount"""
+    """Adjust the quantity of the specified product to the specified amount in the cart"""
 
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -93,8 +81,7 @@ def adjust_cart(request, item_id):
     return redirect(reverse('cart'))
 
 
-
-
+# DELETE FROM CART
 def remove_from_cart(request, item_id):
     """Remove the item from the shopping cart"""
 

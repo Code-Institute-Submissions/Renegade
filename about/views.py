@@ -1,19 +1,15 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
 from .models import *
-
 from .forms import MemberForm
 
-# Create your views here.
 
-
+# ABOUT PAGE
 def about(request):
     """ A view to show members of the band """
 
     member = Member.objects.all()
-
 
     context = {
         'member': member,
@@ -22,7 +18,7 @@ def about(request):
     return render(request, 'about/about.html', context)
 
 
-
+# MEMBER INFO
 def member_info(request, member_id):
     """ A view to show band member information """
 
@@ -35,7 +31,7 @@ def member_info(request, member_id):
     return render(request, 'about/member_info.html', context)
 
 
-
+# ADD BAND MEMBER
 @login_required
 def add_member(request):
     """ Add a band member to the About section """
@@ -48,13 +44,12 @@ def add_member(request):
         if form.is_valid():
             member = form.save()
             messages.success(request, 'Successfully added band member!')
-            # return redirect(reverse('member_info', args=[member.id]))
             return redirect(reverse('about'))
         else:
             messages.error(request, 'Failed to add member. Please ensure the form is valid.')
     else:
         form = MemberForm()
-        
+
     template = 'about/add_member.html'
     context = {
         'form': form,
@@ -63,10 +58,10 @@ def add_member(request):
     return render(request, template, context)
 
 
-
+# EDIT BAND MEMBER
 @login_required
 def edit_member(request, member_id):
-    """ Edit a member of the band """
+    """ Edit a member of the band page """
     if not request.user.is_superuser:
         messages.error(request, 'No access! Only page admin can do that.')
         return redirect(reverse('about'))
@@ -93,8 +88,7 @@ def edit_member(request, member_id):
     return render(request, template, context)
 
 
-
-
+# DELETE BAND MEMBER
 @login_required
 def delete_member(request, member_id):
     """ Delete a member from the band page """

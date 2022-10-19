@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
-    # path('test/', include('home.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('account/', include('accounts.urls')),
     path('store/', include('store.urls')),
@@ -33,6 +32,3 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# handler404 = 'home.views.error_404_view'
-# handler500 = 'home.views.error_500_view'

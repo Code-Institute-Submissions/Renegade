@@ -294,7 +294,7 @@ button {
 /* ALL AUTH */
 
 .user-acc {
-    height: auto !important;
+    height: 100vh !important;
     max-width: 1200px;
 }
 
@@ -536,7 +536,7 @@ button {
     border-bottom-color: #343a40 !important;
 }
 
-.bag-notification-wrapper {
+.cart-notification-wrapper {
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -591,20 +591,6 @@ button {
     }
 }
 
-
-/* @media screen and (max-width: 447px) {
-
-    .remove-item {
-        float: left !important;
-    }
-}
-
-@media screen and (max-width: 422px) {
-
-    .cart-qty-mobile {
-        padding: 0 !important;
-    }
-} */
 
 
 /* MEDIA QUERY FOR NEW ALBUM: ABSOLUTE POSITION FOR DIFFERENT SCREEN SIZES */

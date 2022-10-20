@@ -10,10 +10,10 @@
             <div class="col align-self-center">
                 <h1 class="hero-intro display-4 text-white text-uppercase">New Album Out: <strong>DEC
                         08</strong></h1>
-                <div class="preorder-img" aria-label="renegade new album"><img src="{% static 'images/new_album.png' %}"
-                        alt="new album image" class="img-thumbnail">
+                <div class="preorder-img"><img src="{% static 'images/new_album.png' %}" alt="new album image"
+                        class="img-thumbnail">
                 </div>
-                <a href="{% url 'store' %}" aria-label="shop now link"
+                <a href="{% url 'store' %}" aria-label="shop button"
                     class="hero-button btn btn-warning text-uppercase text-decoration-none text-dark font-weight-bold">Shop
                     Now!</a>
             </div>
@@ -41,7 +41,7 @@
 </section>
 
 <!-- NEWSLETTER SIGNUP SECTION-->
-<section class="newsletter d-flex align-items-center" aria-label="newsletter signup section">
+<section class="newsletter d-flex align-items-center">
     <div class="container-fluid my-5">
         <div class="text-center" aria-label="">
             <h2>Join the Renegade Club</h2>
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center mt-5" aria-label="renegade facebook page link">
+        <div class="text-center mt-5">
             <a class="text-decoration-none text-info" href="https://www.facebook.com/profile.php?id=100086604560986"
                 target="_blank">Follow us on <i class="fa-brands fa-lg fa-facebook"></i> for more info!</a>
         </div>
@@ -74,7 +74,7 @@
 
 
 <!-- NEW SONGS SECTION-->
-<section class="new-song" aria-label="new song section">
+<section class="new-song">
     <h3 class="text-center my-5">NEW RENEGADE SONGS!</h3>
     {% for song in song %}
     {% if song.is_new %}

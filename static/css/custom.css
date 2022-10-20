@@ -147,6 +147,32 @@ button {
     text-transform: uppercase;
 }
 
+.hero-intro {
+    position: relative;
+}
+
+.preorder-img {
+    position: absolute;
+    max-width: 250px;
+    right: 700px;
+    top: 80px;
+}
+
+.preorder-img img {
+    border: none;
+    border-radius: 0;
+    background-color: #000;
+}
+
+.shop-now {
+    background-color: rgb(201, 112, 11);
+}
+
+.shop-now:active {
+    background-color: rgba(201, 112, 11, 0.493);
+
+}
+
 
 
 /* HOME PAGE: SECTION 1 - STREAMING SECTION */
@@ -163,13 +189,8 @@ button {
     font-size: 2em;
 }
 
-.shop-now {
-    background-color: rgb(201, 112, 11);
-}
-
-.shop-now:active {
-    background-color: rgba(201, 112, 11, 0.493);
-
+.menu a:hover {
+    color: #ffc107;
 }
 
 
@@ -568,5 +589,60 @@ button {
     .chevron {
         margin: 0;
         padding: 0;
+    }
+}
+
+
+/* @media screen and (max-width: 447px) {
+
+    .remove-item {
+        float: left !important;
+    }
+}
+
+@media screen and (max-width: 422px) {
+
+    .cart-qty-mobile {
+        padding: 0 !important;
+    }
+} */
+
+
+/* MEDIA QUERY FOR NEW ALBUM: ABSOLUTE POSITION FOR DIFFERENT SCREEN SIZES */
+
+/* LARGE SCREENS */
+@media screen and (max-width: 1199px) {
+
+    .preorder-img {
+        position: absolute;
+        max-width: 250px;
+        right: 520px;
+        top: 80px;
+    }
+}
+
+/* MEDIUM SCREENS */
+@media screen and (max-width: 991px) {
+
+    .preorder-img {
+        position: absolute;
+        max-width: 250px;
+        right: 300px;
+        top: 80px;
+    }
+}
+
+/* SMALL SCREENS */
+@media screen and (max-width: 767px) {
+
+    .preorder-img {
+        position: static;
+        max-width: 250px;
+        /* right: 200px;
+        top: 80px; */
+    }
+
+    .hero-button {
+        margin-top: 15px;
     }
 }

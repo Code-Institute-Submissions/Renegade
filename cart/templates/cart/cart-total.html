@@ -1,0 +1,15 @@
+<h6><strong>Cart Total: ${{ total|floatformat:2 }}</strong></h6>
+{% if total >= free_delivery_threshold %}
+<del class="no-delivery">
+    <h6 class="text-muted">Delivery:
+        {{ sample_delivery_data|floatformat:2 }}</h6>
+</del>
+<h6 class="text-uppercase">Free</h6>
+{% else %}
+<p class="mb-1 text-danger">
+    You could get free delivery by spending just
+    <strong>${{ free_delivery_delta }}</strong> more!
+</p>
+<h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+{% endif %}
+<h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>

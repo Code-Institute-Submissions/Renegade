@@ -4,12 +4,17 @@
 
 {% block content %}
 <!-- HERO SECTION -->
-<section class="hero">
+<section class="hero" aria-label="hero section">
     <div class="container h-100">
         <div class="row h-100">
             <div class="col align-self-center">
-                <h1 class="display-4 text-white text-uppercase">New Album Out: <strong>DEC 08</strong></h1>
-                <button type="button" class="btn bg-warning"><a href="{% url 'store' %}"
+                <h1 class="hero-intro display-4 text-white text-uppercase">New Album Out: <strong>DEC
+                        08</strong></h1>
+                <div class="preorder-img" aria-label="renegade new album"><img src="/media/renegade_preorder.png"
+                        alt="new album image" class="img-thumbnail">
+                </div>
+                <button type="button" aria-label="shop now button" class="hero-button btn bg-warning"><a
+                        href="{% url 'store' %}"
                         class="text-uppercase text-decoration-none text-dark font-weight-bold">Shop
                         Now!</a></button>
             </div>
@@ -18,32 +23,33 @@
 </section>
 
 <!-- STREAMING PLATFORMS SECTION-->
-<section class="streaming-links">
+<section class="streaming-links" aria-label="streaming platforms section">
     <div class="container h-80">
         <div class="d-flex justify-content-around flex-wrap h-100 menu text-center">
-            <div class="col align-self-center"><a href="https://music.apple.com/us/listen-now" target="_blank"><i
+            <div class="col align-self-center"><a aria-label="apple music link"
+                    href="https://music.apple.com/us/listen-now" target="_blank"><i
                         class="fa-solid fa-lg fa-music"></i></a></div>
-            <div class="col align-self-center"><a href="https://open.spotify.com/" target="_blank"><i
-                        class="fa-brands fa-lg fa-spotify"></i></a></div>
-            <div class="col align-self-center"><a href="https://www.youtube.com/" target="_blank"><i
-                        class="fa-regular fa-lg fa-circle-play"></i></a></div>
-            <div class="col align-self-center"><a href="https://music.amazon.com/" target="_blank"><i
-                        class="fa-brands fa-lg fa-amazon"></i></a></div>
-            <div class="col align-self-center"><a href="https://www.deezer.com/en/" target="_blank"><i
-                        class="fa-brands fa-lg fa-deezer"></i></a></div>
+            <div class="col align-self-center"><a aria-label=" spotify music link" href="https://open.spotify.com/"
+                    target="_blank"><i class="fa-brands fa-lg fa-spotify"></i></a></div>
+            <div class="col align-self-center"><a aria-label="youtube music link" href="https://www.youtube.com/"
+                    target="_blank"><i class="fa-regular fa-lg fa-circle-play"></i></a></div>
+            <div class="col align-self-center"><a aria-label="amazon music link" href="https://music.amazon.com/"
+                    target="_blank"><i class="fa-brands fa-lg fa-amazon"></i></a></div>
+            <div class="col align-self-center"><a aria-label="deezer music link" href="https://www.deezer.com/en/"
+                    target="_blank"><i class="fa-brands fa-lg fa-deezer"></i></a></div>
         </div>
     </div>
 </section>
 
 <!-- NEWSLETTER SIGNUP SECTION-->
-<section class="newsletter d-flex align-items-center">
+<section class="newsletter d-flex align-items-center" aria-label="newsletter signup section">
     <div class="container-fluid my-5">
-        <div class="text-center">
+        <div class="text-center" aria-label="">
             <h2>Join the Renegade Club</h2>
             <p class="text-big">Get all Renegade updates straight to your inbox. Tour dates, new merch, pre-sales,
                 relases and more. Sign up now and becore a part of the Renegade family</p>
         </div>
-        <div class="">
+        <div aria-label="newsletter signup form">
             <div class="form-holder">
                 <form onsubmit="return sendMail(this);">
                     {% csrf_token %}
@@ -60,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center mt-5">
+        <div class="text-center mt-5" aria-label="renegade facebook page link">
             <a class="text-decoration-none text-info" href="https://www.facebook.com/profile.php?id=100086604560986"
                 target="_blank">Follow us on <i class="fa-brands fa-lg fa-facebook"></i> for more info!</a>
         </div>
@@ -69,22 +75,23 @@
 
 
 <!-- NEW SONGS SECTION-->
-<section class="new-song">
-    <h3 class="text-center my-5">NEW SONGS!</h3>
+<section class="new-song" aria-label="new song section">
+    <h3 class="text-center my-5">NEW RENEGADE SONGS!</h3>
     {% for song in song %}
     {% if song.is_new %}
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="{{ song.url }}"></iframe>
+        <iframe class="embed-responsive-item" title="newSong" src="{{ song.url }}"></iframe>
     </div>
     {% endif %}
     {% endfor %}
 </section>
 
 <!-- TOUR DATES SECTION-->
-<section>
+<section aria-label="tour dates section">
     <div class="container text-uppercase">
         <div class="tour">
             <div class="mt-5">
+                <h3 class="text-center my-5">RENEGADE TOUR DATES!</h3>
                 <div class="tour-list">
                     {% for tour in tour %}
                     <div class="row my-5" id="tour-item">

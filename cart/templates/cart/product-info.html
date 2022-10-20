@@ -1,0 +1,8 @@
+<p class="my-0">{{ item.product.name }}</p>
+<p class="my-0">Size:
+    {% if item.product.has_sizes %}<strong>{{ item.size|upper }}</strong>
+    {% else %}
+    <span class="text-muted">N/A</span>
+    {% endif %}
+</p>
+<p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>

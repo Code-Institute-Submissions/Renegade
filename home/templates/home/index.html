@@ -13,10 +13,9 @@
                 <div class="preorder-img" aria-label="renegade new album"><img src="{% static 'images/new_album.png' %}"
                         alt="new album image" class="img-thumbnail">
                 </div>
-                <button type="button" aria-label="shop now button" class="hero-button btn bg-warning"><a
-                        href="{% url 'store' %}"
-                        class="text-uppercase text-decoration-none text-dark font-weight-bold">Shop
-                        Now!</a></button>
+                <a href="{% url 'store' %}" aria-label="shop now link"
+                    class="hero-button btn btn-warning text-uppercase text-decoration-none text-dark font-weight-bold">Shop
+                    Now!</a>
             </div>
         </div>
     </div>
@@ -94,7 +93,7 @@
                 <h3 class="text-center my-5">RENEGADE TOUR DATES!</h3>
                 <div class="tour-list">
                     {% for tour in tour %}
-                    <div class="row my-5" id="tour-item">
+                    <div class="row my-5 tour-item">
                         <div class="col-sm">
                             <p>{{ tour.date }}</p>
                         </div>

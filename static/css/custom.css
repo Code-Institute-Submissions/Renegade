@@ -252,12 +252,12 @@ button {
     margin-top: 100px;
 }
 
-#tour-item {
+.tour-item {
     width: 98%;
     margin: auto;
 }
 
-#tour-item:not(:last-child) {
+.tour-item:not(:last-child) {
     border-bottom: 1px solid white;
 }
 

@@ -8,7 +8,7 @@ function newsMessage() {
 
     // If mail value is empty, return the faulty message we set in our index page
     if (email.value === '') {
-        newsFail.style.display = 'block'
+        newsFail.style.display = 'block';
     } else {
         setTimeout(() => {
             email.value = '';

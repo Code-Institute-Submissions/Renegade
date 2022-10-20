@@ -2,7 +2,7 @@
 <!-- NAVBAR LOGO -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
     <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/renegade-logo.png' %}" alt=""
-            width="300px"></a>
+            width="300"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -110,7 +110,7 @@
                         aria-haspopup="true" aria-expanded="false">
                         <div><i class="fas fa-user fa-lg text-white"></i></div>
                     </a>
-                    <div class="dropdown-menu" style="right: 0; left: auto;" aria-labelledby="account-options">
+                    <div class="dropdown-menu" style="right: 0; left: auto;">
                         {% if request.user.is_authenticated %}
                         <p class="text-center mt-2">Logged in as: <strong>{{ user.username }}</strong></p>
                         <div class="dropdown-divider"></div>

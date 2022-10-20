@@ -8,6 +8,9 @@ from accounts.models import UserAccount
 
 
 class Order(models.Model):
+    """
+    Model for checkout order
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_account = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
@@ -59,9 +62,12 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """
+    Model for Order Item in Checkout
+    """
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
-    product_size = models.CharField(max_length=2, null=True, blank=True)  # Current Merch Sizes: XS, S, M, L, XL, XXL
+    product_size = models.CharField(max_length=2, null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 

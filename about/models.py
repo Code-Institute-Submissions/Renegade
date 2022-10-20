@@ -4,6 +4,9 @@ from django_countries.fields import CountryField
 
 
 class Genre(models.Model):
+    """
+    A model for music genre
+    """
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -11,6 +14,9 @@ class Genre(models.Model):
 
 
 class Instrument(models.Model):
+    """
+    A model for music instrument/role
+    """
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -18,6 +24,9 @@ class Instrument(models.Model):
 
 
 class Member(models.Model):
+    """
+    A model for creating a new band member
+    """
     name = models.CharField(max_length=50, null=False, blank=False)
     birthdate = models.DateField(blank=True, null=True)
     town_or_city = models.CharField(max_length=40, null=False, blank=False)

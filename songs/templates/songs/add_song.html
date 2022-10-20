@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid video-form">
     <hr class="w-80 mb-1 bg-light">
     <!-- BREADCRUMB NAVIGATION -->
     <div class="row" aria-label="breadcrumb">
@@ -31,7 +31,7 @@
                     <p class="text-danger font-italic mt-5">Important! Use only <strong>EMBED</strong> URL!</p>
                     <div class="text-right">
                         <a class="btn btn-light rounded-0" href="{% url 'videos' %}">Cancel</a>
-                        <button class="btn btn-light rounded-0" type="submit">Add Event</button>
+                        <button class="btn btn-warning rounded-0" type="submit">Add Song</button>
                     </div>
                 </form>
             </div>

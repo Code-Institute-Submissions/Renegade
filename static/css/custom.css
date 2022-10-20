@@ -165,7 +165,7 @@ button {
 }
 
 .shop-now {
-    background-color: rgb(201, 112, 11);
+    background-color: #c9700b;
 }
 
 .shop-now:active {
@@ -246,6 +246,7 @@ button {
 }
 
 
+
 /* HOME PAGE: SECTION 3 - TOUR DATES SECTION */
 .tour {
     margin-top: 100px;
@@ -264,7 +265,9 @@ button {
     list-style-type: none;
 }
 
-
+.tour-form {
+    min-height: 70vh;
+}
 
 
 
@@ -274,6 +277,7 @@ button {
 .new-song iframe {
     height: fit-content;
 }
+
 
 
 
@@ -391,6 +395,12 @@ button {
 }
 
 
+
+/* VIDEO SECTION */
+
+.video-form {
+    min-height: 70vh;
+}
 
 /* STORE PRODUCTS FORM */
 
@@ -565,7 +575,6 @@ button {
 
 
 
-
 /* *** MEDIA QUERY *** */
 /* ------------------- */
 
@@ -623,11 +632,21 @@ button {
     .preorder-img {
         position: static;
         max-width: 250px;
-        /* right: 200px;
-        top: 80px; */
     }
 
     .hero-button {
         margin-top: 15px;
+    }
+
+    .breadcrumb-item {
+        font-size: 12px !important;
+    }
+}
+
+
+/* ULTRA SMALL SCREENS */
+@media screen and (max-width: 370px) {
+    .breadcrumb-item {
+        font-size: 10px !important;
     }
 }

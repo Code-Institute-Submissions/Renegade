@@ -3,7 +3,7 @@
 
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid video-form">
     <hr class="w-80 mb-1 bg-light">
     <!-- BREADCRUMB NAVIGATION -->
     <div class="row" aria-label="breadcrumb">
@@ -30,6 +30,7 @@
                     enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
+                    <p class="text-danger font-italic mt-5">Important! Use only <strong>EMBED</strong> URL!</p>
                     <div class="text-right">
                         <a class="btn btn-danger text-white rounded-0" href="{% url 'videos' %}">Cancel</a>
                         <button class="btn btn-warning text-dark font-weight-bold rounded-0" type="submit">Save</button>
@@ -38,4 +39,5 @@
             </div>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

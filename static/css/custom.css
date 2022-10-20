@@ -294,9 +294,8 @@ button {
 /* ALL AUTH */
 
 .user-acc {
-    height: 60vh;
+    height: auto !important;
     max-width: 1200px;
-    margin-top: 80px;
 }
 
 .user-acc input {

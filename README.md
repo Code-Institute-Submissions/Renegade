@@ -1209,21 +1209,76 @@ Testing results can be found [here](TESTING.md).
 
 # Credits
 
-### Content
 
-- All the products content were taken from [Amazon](https://www.amazon.com/)
-- The images were taken from [Aliexpress](https://www.aliexpress.com/)
-- The 2 videos used as a background on the Landing Page were taken from [Pexels](https://www.pexels.com/)
-- The Watches & Clocks logos and favicon are my own designed and build<br>
+### Home
+- Hero image downloaded from [unsplash.com](https://unsplash.com/photos/QmX5lw8StoQ).
+
+- Logo created through [CoolText](https://cooltext.com/) page.
+
+<br>
+
+### Store
+Product images were taken from couple of sites. I used some of the bands that I listen to.
+
+- All of the CD Images were downloaded from [Amazon.com](https://www.amazon.com/).
+
+- All Metallica Merch downloaded from their own shop [Metallica.com](https://www.metallica.com/store/)
+
+- Alter Bridge Merch was downloaded from their own shop [AlterBridge.com](https://alterbridge.com/collections/store)
+
+- Killswitch Engage Merch was downloaded from [ShopCentral](https://shop.merchcentral.com/collections/killswitch-engage) where they have their Merch shop hosted.
+
+- Renegade Pre-Order Album was made via album maker [Fotor.com](https://www.fotor.com/).
+
+<br>
+
+### About
+About images were taken from couple of sites. I used this to pay respect to metal artists that are no longer with us.
+
+- Dimebag Darrel [Last.fm](https://www.last.fm/music/Dimebag+Darrell/+images/dc5295f1a20e42b2bfc89d24f2db8416).
+
+- Trevor Strnad [Pitchfork.com](https://pitchfork.com/news/trevor-strnad-singer-for-the-black-dahlia-murder-dies-at-41/).
+
+- Joey Jordison [Kerrang.com](https://www.kerrang.com/7-things-you-probably-didnt-know-about-joey-jordison).
+
+- Cliff Burton [Loudersound.com](https://www.loudersound.com/features/16-things-you-might-not-have-known-about-cliff-burton).
+
+- Jeff Hanneman [Looudersound.com](https://www.kerrang.com/7-things-you-probably-didnt-know-about-joey-jordison).
+
+<br>
+
+
+
+### Code
+
+- Followed Boutique Ado from CodeInstitute LMS for assistance my PP5. I changed some things throughout the project but checkout and stripe core functionality is borrowed from B.A.  
+Store and Cart were changed a bit but functionality follows the same that was covered in B.A.
+
+- Website styling is mostly mine but I used [AlterBridge](https://alterbridge.com/) website as an inspiration for styling.
+
+- [Build an Ecommerce Website with Django](https://www.youtube.com/c/JustDjango) Youtube channel was a great help and a starting point.
+
+- I also used [Dennis Ivy's Youtube Channel](https://www.youtube.com/c/DennisIvy) for tips on Django Ecommerce and it was a great starting point, especially to practice.
+
+<br>
 
 ### Information Sources / Resources
 
-- [W3Schools - Python](https://www.w3schools.com/python/)
 - [Stack Overflow](https://stackoverflow.com/)
-- [Scrimba - Pyhton](https://scrimba.com/learn/python)
 - [Code Institute - Slack Community](https://slack.com/)
+- [W3Schools - Python](https://www.w3schools.com/python/)
+
+
+<br>
+<br>
+
 
 ## Special Thanks
+- Special thanks to my mentor **Ronan McCleland** for all the support!
 
-- Special thanks to my mentor Sandeep Aggarwal, my colleagues at Code Institute, Kasia Bogucka, and Mairéad Gillic for
-  their assistance throughout this project.
+- Thanks to my cohort facilitator **Kasia Bogucka** for being so prompt with responses and checking in on us often.
+
+- Tutors **Oisin**, **Rebecca**, **Alan**, **Sean**, **Ger**, **Ed** and **Gemma** for all the assistance and patience they showed over the last few months.
+
+- This was by far the biggest challenge I had in coding and I learned so much thanks to brilliant support by everyone from **CI** team my and **Slack** colleagues.
+

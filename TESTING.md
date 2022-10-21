@@ -244,17 +244,16 @@ When I tested the **Lighthouse** in **STORE** section of our page, performance w
     <img src="https://github.com/anluke/Renegade/blob/main/README_Images/Lighthouse/desktop_lighthouse_store_report.png?raw=true">
     </details>  
 
-
 <br>
-
 
 
 ## Console
 Results came back clean and there are no underlying issues in the backend of the project.
 <details><summary>Google Console Report (🔻click to view 🔻)</summary>
-    <img src="">
+    <img src="https://github.com/anluke/Renegade/blob/main/README_Images/Google%20Console/console.png?raw=true">
     </details>  
 
+<br>
 
  ## JavaScript
 I did not have many JS files in this project but all of the JS files passed the test without issues.  
@@ -306,9 +305,9 @@ Results of the JS files can be seen below:
 
 * The newsletter submit form takes the email and sends the newsletter welcome email to the user. User does not have to be logged in to use that service.
 
-* Registered User or a Guest User are both able to Add Items to Basket, Update the Quantity, Remove as needed and View the products from Cart all the way to Checkpoint so CRUD is functional there too.
+* Registered User or a Guest User are both able to Add Items to Basket, Update the Quantity, Remove as needed and View the products from Cart all the way to Checkpoint so **CRUD** is functional there too.
 
-* Site Owner/SuperUser CRUD is working. Site Owner is able to create, read, update and and delete **Band Members**, **Tour Events**, **Store Products** and **Songs**.
+* Site Owner/SuperUser **CRUD** is working. Site Owner is able to create, read, update and and delete **Band Members**, **Tour Events**, **Store Products** and **Songs**.
 
 * If I add a Tour event that is past today's date it will not show up on our Home page or Tour page.
 
@@ -316,7 +315,7 @@ Results of the JS files can be seen below:
 
 * Streaming Platform links are opening the links as they should.
 
-* CRUD is also fully functional in **mobile** and **tablet** view and there are no issues rendering files.
+* **CRUD** is also fully functional in **mobile** and **tablet** view and there are no issues rendering files.
 
 * All of the **EDIT** and **DELETE** links on our site work without a problem and superuser can use them.
 
@@ -340,3 +339,9 @@ Results of the JS files can be seen below:
 - I have tested the Admin Panel repeatedly since the start of the project development.  
 All the models are working without issues.
 - I have created, deleted, and updated data in all models without errors. The models have the behaviour expected for what they were built for.
+
+<br>
+
+## Bugs
+
+No reported Bugs as of yet.

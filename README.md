@@ -74,7 +74,36 @@ Project Idea came from my own interest to build a site a friend who actively pla
     - [Login](#login)
     - [Logout](#Logout)
     - [Password Reset](#password-reset)
-    
+  - [Social Media And Marketing](#social-media-and-marketing)
+    - [Renegade Band Facebook Page](#renegade-band-facebook-page)
+    - [Newsletter](#newsletter)
+    - [Privacy Policy](#privacy-policy)
+- [SEO](#seo)
+    - [sitemap.xml](#sitemap)
+    - [robots.txt](#robots)
+- [AWS Setup](#aws-setup)
+    - [AWS S3 Bucket](#aws-s3-bucket)
+- [Stripe Payments](#stripe-payments)
+    - [Payments](#payments)
+    - [Webhooks](#webhooks)
+- [Technologies Used](#technologies-used)
+    - [Languages Used](#languages-used)
+    - [Django Packages](#django-packages)
+    - [Frameworks - Libraries - Programs Used](#frameworks---libraries---programs-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+    - [Django App Creation](#django-app-creation)
+    - [Project Deployment](#project-deployment)
+    - [Final Deployment](#final-deployment)
+- [Credits](#credits)
+        - [Home Media](#home-media)
+        - [Store Media](#store-media)
+        - [About Media](#about-media)
+        - [Code Reference](#code-reference)
+        - [Information Resources](#information-resources)
+    - [Special Thanks](#special-thanks)
+
+
   
 
 # UX
@@ -871,7 +900,7 @@ I used [Privacy Policy Generator](https://www.privacypolicygenerator.info/) to g
 <br>
 
 
-# SEARCH ENGINE OPTIMIZATION
+# SEO
 
 Site was optimized by careful selection of keywords relating to the **renegade band**, **metal music** and **band merch**.
 Keywords were chosen based on common topics in the Music and Merchandise. The keywords were tested in Google Search and all of them returned relevant information about metal band merchandise, tickets, events and so on.
@@ -882,20 +911,20 @@ Below is the screenshot of our **head.html** SEO including **keywords**.
 
 <br>
 
-## sitemap.xml
+## sitemap
 
-- A sitemap file with a list of important URLs was added to ensure that search engines are able to easily navigate through the site and understand its structure.  
+A **sitemap.xml** file with a list of important URLs was added to ensure that search engines are able to easily navigate through the site and understand its structure.  
 This was made using XML-sitemaps.com by following the next steps:
 
-    - Paste the URL of the deployed site into XML-sitemaps
-    - Download the XML sitemap file
-    - Add the file into the projects root folder, named as sitemap.xml
+- Paste the URL of the deployed site into XML-sitemaps
+- Download the XML sitemap file
+- Add the file into the projects root folder, named as sitemap.xml
 
 <br>
 
-## robots.txt
+## robots
 
-A robots.txt file was created to tell the search engines where not to go on our website and increase the quality of the site, improving the SEO rating.
+A **robots.txt** file was created to tell the search engines where not to go on our website and increase the quality of the site, improving the SEO rating.
 
 ![#](./README_Images/SEO/robots.txt.png)
 
@@ -1054,11 +1083,14 @@ AWS_S3_OBJECT_PARAMETERS = {
 - The Stripe payments system is set up as the online payment processing and credit card processing platform for the purchases. 
 You will need a stripe account which you can sign up for [here](https://stripe.com/en-ie).
 
+<br>
 
-### Payments 
+## Payments 
 - To set up stripe payments please follow the guide [here](https://stripe.com/docs/payments/accept-a-payment#web-collect-card-details).
 
-### Webhooks
+<br>
+
+## Webhooks
 
 1. To set up a webhook, sign into your stripe account and click **Developers** located in the top right of the navbar.
 2. Then in the side-nav under the Developers title, click on "Webhooks", then **Add endpoint**.
@@ -1087,7 +1119,7 @@ You will need a stripe account which you can sign up for [here](https://stripe.c
 <br>
 <br>
 
-## TECHNOLOGIES USED
+# TECHNOLOGIES USED
 
 ## Languages Used
 
@@ -1108,7 +1140,7 @@ You will need a stripe account which you can sign up for [here](https://stripe.c
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to style the forms
 - [Pillow](https://pypi.org/project/Pillow/) to process and save all the images downloaded through the database<br>
 
-### Frameworks - Libraries - Programs Used
+## Frameworks - Libraries - Programs Used
 
 - [Bootstrap](https://getbootstrap.com/)
 - Used to style the website, add responsiveness and interactivity
@@ -1149,7 +1181,9 @@ Testing results can be found [here](TESTING.md).
 
 <br>
 
-## Creating the Django app
+# Deployment
+
+## Django App Creation
 
 1. Go to the Code Institute Gitpod Full Template [Template](https://github.com/Code-Institute-Org/gitpod-full-template).
 2. Click on **Use This Template**.
@@ -1165,7 +1199,7 @@ Testing results can be found [here](TESTING.md).
 12. Run the server to test if the app is installed.
 13. If the terminal output is **The install worked successfully! Congratulations!** you are good to go.<br>
 
-## Deployment of This Project
+## Project Deployment
 
 - This site was deployed by completing the following steps:
 
@@ -1210,14 +1244,14 @@ Testing results can be found [here](TESTING.md).
 # Credits
 
 
-### Home
+### Home Media
 - Hero image downloaded from [unsplash.com](https://unsplash.com/photos/QmX5lw8StoQ).
 
 - Logo created through [CoolText](https://cooltext.com/) page.
 
 <br>
 
-### Store
+### Store Media
 Product images were taken from couple of sites. I used some of the bands that I listen to.
 
 - All of the CD Images were downloaded from [Amazon.com](https://www.amazon.com/).
@@ -1232,7 +1266,7 @@ Product images were taken from couple of sites. I used some of the bands that I 
 
 <br>
 
-### About
+### About Media
 About images were taken from couple of sites. I used this to pay respect to metal artists that are no longer with us.
 
 - Dimebag Darrel [Last.fm](https://www.last.fm/music/Dimebag+Darrell/+images/dc5295f1a20e42b2bfc89d24f2db8416).
@@ -1249,7 +1283,7 @@ About images were taken from couple of sites. I used this to pay respect to meta
 
 
 
-### Code
+### Code Reference
 
 - Followed Boutique Ado from CodeInstitute LMS for assistance my PP5. I changed some things throughout the project but checkout and stripe core functionality is borrowed from B.A.  
 Store and Cart were changed a bit but functionality follows the same that was covered in B.A.
@@ -1262,7 +1296,7 @@ Store and Cart were changed a bit but functionality follows the same that was co
 
 <br>
 
-### Information Sources / Resources
+### Information Resources
 
 - [Stack Overflow](https://stackoverflow.com/)
 - [Code Institute - Slack Community](https://slack.com/)

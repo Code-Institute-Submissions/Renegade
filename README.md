@@ -834,12 +834,14 @@ The email will be sent to their address after confirm it in the input form.
 <br>
 <br>
 
-# Social Media And Marketing
+# SOCIAL MEDIA AND MARKETING
 
 For Social Media Marketing, Facebook is still the best option to promote bands and share all the relevant information regarding Merchandise offers, Tours, Song releases, etc  
 
 It's the best way to reach out to younger fans which is the main target audience for Renegade Band.  
 In Facebook, 22% of users are aged between 18 - 24 and 31% are aged between 25 - 34 years of age which puts this into better perspective.
+
+<br>
 
 ## Renegade Band Facebook Page
 ![Renegade Band Facebook Page](./README_Images/Digital%20Marketing/facebook.png)
@@ -848,6 +850,7 @@ In Facebook, 22% of users are aged between 18 - 24 and 31% are aged between 25 -
 - As you can see our Facebook Page has a nicely built **Intro** with band description & location.  
 Single post has been made as a template of how we would use Facebook to reach out audience and share the information regarding the new release of the album and upcoming Tour.
 
+<br>
 
 ## Newsletter
 
@@ -855,14 +858,37 @@ Single post has been made as a template of how we would use Facebook to reach ou
 The form is fully functional and will send a welcome email to the user.  
 The newsletter section has been created via 'EmailJS' and the rest was custom code found on various sides of **YouTube**.
 
+<br>
 
 ## Privacy Policy
 
 I used [Privacy Policy Generator](https://www.privacypolicygenerator.info/) to generate a [report](https://www.privacypolicygenerator.info/live.php?token=jqTvmFQltqNqxKeXyGhsspij2kentRAi) and ensure that the website is compliant with the European Privacy Policy Rules.
 
 <details><summary>Renegade Band Privacy Policy (🔻click to view 🔻)</summary>
-<img src="">
+<img src="https://github.com/anluke/Renegade/blob/main/README_Images/Digital%20Marketing/Privacy%20Policy.png?raw=true">
 </details>
 
 <br>
 
+
+# SEARCH ENGINE OPTIMIZATION
+
+Site was optimized by careful selection of keywords relating to the **renegade band**, **metal music** and **band merch**.
+Keywords were chosen based on common topics in the Music and Merchandise. The keywords were tested in Google Search and all of them returned relevant information about metal band merchandise, tickets, events and so on.
+
+Below is the screenshot of our **head.html** SEO including **keywords**.
+
+![#](./README_Images/SEO/keywords.png)
+
+<br>
+
+## sitemap.xml
+
+- A sitemap file with a list of important URLs was added to ensure that search engines are able to easily navigate through the site and understand its structure.  
+This was made using XML-sitemaps.com by following the next steps:
+
+    - Paste the URL of the deployed site into XML-sitemaps
+    - Download the XML sitemap file
+    - Add the file into the projects root folder, named as sitemap.xml
+
+<br>

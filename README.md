@@ -892,3 +892,338 @@ This was made using XML-sitemaps.com by following the next steps:
     - Add the file into the projects root folder, named as sitemap.xml
 
 <br>
+
+## robots.txt
+
+A robots.txt file was created to tell the search engines where not to go on our website and increase the quality of the site, improving the SEO rating.
+
+![#](./README_Images/SEO/robots.txt.png)
+
+<br>
+<br>
+
+# AWS SETUP
+
+<br>
+
+## AWS S3 Bucket 
+
+The deployed site uses AWS S3 Buckets to store the webpages static and media files. More information on how you can set up an AWS S3 Bucket can be found below:
+
+1. Create an AWS account [here](https://portal.aws.amazon.com/).
+2. Login to your account and within the search bar type in **S3**.
+3. Within the S3 page click on the button that says **Create Bucket**.
+4. Name the bucket and select the region which is closest to you.
+5. Underneath **Object Ownership** select **ACLs enabled**.
+6. Uncheck "Block Public Access" and acknowledge that the bucket will be made public, then click **Create Bucket**.
+7. Inside the created bucket click on the **Properties** tab. Below "Static Website Hosting" click **Edit** and change the Static website hosting option to **Enabled**. Copy the default values for the index and error documents and click **Save Changes**.
+8. Click on the **Permissions** tab, below **Cross-origin Resource Sharing (CORS)**, click **Edit** and then paste in the following code:
+
+  ```
+    [
+        {
+            "AllowedHeaders": [
+            "Authorization"
+            ],
+            "AllowedMethods": [
+            "GET"
+            ],
+            "AllowedOrigins": [
+            "*"
+            ],
+            "ExposeHeaders": []
+        }
+    ]
+  ```
+
+9. Within the **Bucket Policy** section. Click **Edit** and then **Policy Generator**. Click the **Select Type of Policy** dropdown and select **S3 Bucket Policy** and within **Principle** allow all principals by typing "*".
+10. Within the "Actions" dropdown menu select **Get Object** and in the previous tab copy the **Bucket ARN number**. Paste this within the policy generator within the field labelled **Amazon Resource Name (ARN)**.
+11. Click **Add statement > Generate Policy** and copy the policy that's been generated and paste this into the **Bucket Policy Editor**.
+12. Before saving, add /* at the end of your **Resource Key**, this will allow access to all resources within the bucket.
+13. Once saved, scroll down to the **Access Control List (ACL)** and click **Edit**.
+14. Next to **Everyone (public access)**, check the **list** checkbox and save your changes.
+
+### IAM Set Up
+
+1. Search for IAM within the AWS navigation bar and select it.
+2. Click **User Groups** that can be seen in the side bar and then click **Create group** and name the group 'manage-your-project-name'.
+3. Click "Policies" and then **Create policy**.
+4. Navigate to the JSON tab and click **Import Managed Policy**, within here search **S3** and select **AmazonS3FullAccess** followed by **Import**.
+5. Navigate back to the recently created S3 bucket and copy your **ARN Number**. Go back to **This Policy** and update the **Resource Key** to include your ARN Number, and another line with your ARN followed by a "/*".
+   
+- Below is an example of what this should look like:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*",
+                "s3-object-lambda:*"
+            ],
+            "Resource": [
+                "YOUR-ARN-NO-HERE",
+                "YOUR-ARN-NO-HERE/*"
+            ]
+        }
+    ]
+**
+
+```
+
+1. Ensure the policy has been given a name and a short description, then click **Create Policy**.
+2. Click "User groups", and then the group you created earlier. Under permissions click "Add Permission" and from the dropdown click **Attach Policies**.
+3. Select **Users** from the sidebar and click **Add User**.
+4. Provide a username and check **Programmatic Access**, then click **Next: Permissions**.
+5. Ensure your policy is selected and navigate through until you click **Add User**.
+6. Download the **CSV file**, which contains the user's access key and secret access key.
+
+### Connecting AWS to the Project
+
+1. Within your terminal install the following packages by typing 
+
+```
+  pip3 install boto3
+  pip3 install django-storages 
+```  
+
+2. Freeze the requirements by typing:
+
+```
+pip3 freeze > requirements.txt
+```
+
+3. Add "storages" to your installed apps within your settings.py file.
+4. At the bottom of the settings.py file add the following code:
+
+```
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = 'insert-bucket-name-here'
+    AWS_S3_REGION_NAME = 'insert-your-region-here'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+```
+5. Add the following keys within Heroku: **AWS_ACCESS_KEY_ID** and **AWS_SECRET_ACCESS_KEY**. These can be found in your CSV file.
+6. Add the key **USE_AWS**, and set the value to True within Heroku.
+6. Remove the **DISABLE_COLLECTSTATIC** variable from Heroku.
+7. Within your **settings.py** file inside the code just written add: 
+
+```
+  AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+```
+8. Inside the **settings.py** file inside the bucket config if statement add the following lines of code:
+
+```
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_LOCATION = 'static'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+MEDIAFILES_LOCATION = 'media'
+
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+}
+```
+
+9. In the root directory of your project create a file called **custom_storages.py**. Import the following at the top of this file and add the classes below:
+
+```
+  from django.conf import settings
+  from storages.backends.s3boto3 import S3Boto3Storage
+
+  class StaticStorage(S3Boto3Storage):
+    location = settings.STATICFILES_LOCATION
+
+  class MediaStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_LOCATION
+```
+
+10. Navigate back to you AWS S3 Bucket and click on **Create Folder** name this folder **media**, within the media file click **Upload > Add Files** and select the images for your site.
+11. Under **Permissions** select the option **Grant public-read access** and click **Upload**.
+
+<br>
+<br>
+
+# STRIPE PAYMENTS
+
+- The Stripe payments system is set up as the online payment processing and credit card processing platform for the purchases. 
+You will need a stripe account which you can sign up for [here](https://stripe.com/en-ie).
+
+
+### Payments 
+- To set up stripe payments please follow the guide [here](https://stripe.com/docs/payments/accept-a-payment#web-collect-card-details).
+
+### Webhooks
+
+1. To set up a webhook, sign into your stripe account and click **Developers** located in the top right of the navbar.
+2. Then in the side-nav under the Developers title, click on "Webhooks", then **Add endpoint**.
+3. On the next page you will need to input the link to your heroku app followed by /checkout/wh/.
+    - I shared STRIPE Webhooks screenshots earlier during checkout. Find more here: [Stripe](#stripe).
+
+4. Then click on **+ Select events** and check **Select all events** checkbox at the top before clicking **Add events** at the bottom. Once this is done finish the form by clicking **Add endpoint**.
+5. Your webhook is now created and you should see that it has generated a secret key. This key is required for Heroku config Vars.
+6. Head over to your app in heroku and navigate to the config vars section under settings. You will need the secret key you just generated for your webhook, in addition to your Publishable key and secret key that you can find in the API keys section back in stripe.
+7. Add these values under these keys:
+   
+    ```
+    STRIPE_PUBLIC_KEY = 'insert your stripe publishable key'
+    STRIPE_SECRET_KEY = 'insert your secret key'
+    STRIPE_WH_SECRET = 'insert your webhooks secret key'
+
+    ```
+8. In the end back in your **settings.py** file, insert the following code at the bottom of the file: 
+
+    ```
+    STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+    STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+    STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+    ```
+
+<br>
+<br>
+
+## TECHNOLOGIES USED
+
+## Languages Used
+
+- [HTML 5](https://en.wikipedia.org/wiki/HTML/)
+- [CSS 3](https://en.wikipedia.org/wiki/CSS)
+- [JavaScript](https://www.javascript.com/)
+- [Django](https://www.python.org/)
+- [Python](https://www.djangoproject.com/)<br>
+
+## Django Packages
+
+- [Gunicorn](https://gunicorn.org/) as the server for Heroku
+- [Dj_database_url](https://pypi.org/project/dj-database-url/) to parse the database URL from the environment variables in Heroku
+- [Psycopg2](https://pypi.org/project/psycopg2/) as an adaptor for Python and PostgreSQL databases
+- [Summernote](https://summernote.org/) as a text editor
+- [Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html) for authentication, registration and account management
+- [Stripe](https://pypi.org/project/stripe/) for processing all online and credit card purchases on the website
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to style the forms
+- [Pillow](https://pypi.org/project/Pillow/) to process and save all the images downloaded through the database<br>
+
+### Frameworks - Libraries - Programs Used
+
+- [Bootstrap](https://getbootstrap.com/)
+- Used to style the website, add responsiveness and interactivity
+- [Jquery](https://jquery.com/)
+- All the scripts were written using jquery library
+- [Git](https://git-scm.com/)
+- Git was used for version control by utilizing the Gitpod terminal to commit to Git and push to GitHub
+- [GitHub](https://github.com/)
+- GitHub is used to store the project's code after being pushed from Git
+- [Heroku](https://id.heroku.com)
+- Heroku was used to deploy the live project
+- [PostgreSQL](https://www.postgresql.org/)
+- Database used through Heroku.
+- [Lucidchart](https://lucid.app/)
+- Lucidchart was used to create the database diagram
+- [W3C - HTML](https://validator.w3.org/)
+- W3C- HTML was used to validate all the HTML code
+- [W3C - CSS](https://jigsaw.w3.org/css-validator/)
+- W3C - CSS was used to validate the CSS code
+- [Fontawesome](https://fontawesome.com/)
+- Used to add icons to the website
+- [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
+- To check App responsiveness and debugging
+- [Google Fonts](https://fonts.google.com/)
+- To add the 2 fonts that were used throughout the project
+- [Balsamiq](https://balsamiq.com/)
+- To build the wireframes for the project
+- [CoolText](https://cooltext.com/)
+- To build the website Logo
+- [AWS](https://aws.amazon.com/)
+- was used to host the static files and media<br>
+
+<br>
+
+# Testing
+
+Testing results can be found [here](TESTING.md).
+
+<br>
+
+## Creating the Django app
+
+1. Go to the Code Institute Gitpod Full Template [Template](https://github.com/Code-Institute-Org/gitpod-full-template).
+2. Click on **Use This Template**.
+3. Once the template is available in your repository click on Gitpod.
+4. When the template image and the Gitpod are ready, open a new terminal to start a new Django App.
+5. Install Django and gunicorn: pip3 install django gunicorn.
+6. Install supporting database libraries **dj_database_url** and **psycopg2** library: **pip3 install dj_database_url psycopg2**.
+7. Create file for requirements: in the terminal window type **pip freeze --local > requirements.txt**.
+8. Create project: in the terminal window type **django-admin startproject your_project_name**.
+9. Create app: in the terminal window type **python3 manage.py startapp your_app_name**.
+10. Add app to the list of installed apps in **settings.py** file: **your_app_name**.
+11. Migrate DB changes: in the terminal window type **python3 manage.py migrate**.
+12. Run the server to test if the app is installed.
+13. If the terminal output is **The install worked successfully! Congratulations!** you are good to go.<br>
+
+## Deployment of This Project
+
+- This site was deployed by completing the following steps:
+
+1. Log in to [Heroku](https://id.heroku.com) or create an account.
+2. On the main page click the button labelled **New** in the top right corner and from the drop-down menu select **Create New
+   App**.
+3. You must enter a unique app name.
+4. Next select your region.
+5. Click on the Create App button.
+6. Click in resources and select **Heroku Postgres** database.
+7. Click Reveal Config Vars and add:
+ * A new record with SECRET_KEY
+ * A new record with the AWS_ACCESS_KEY_ID
+ * A new record with the AWS_SECRET_ACCESS_KEY
+ * A new record with the EMAIL_HOST_PASS
+ * A new record with the EMAIL_HOST_USER 
+ * A new record with the STRIPE_PUBLIC_KEY
+ * A new record with the STRIPE_SECRET_KEY
+ * A new record with the STRIPE_WH_SECRET
+ * A new record with the DISABLE_COLLECTSTATIC = 1
+8.  The next page is the project’s Deploy Tab. Click on the Settings Tab and scroll down to Config Vars.
+9.  Next, scroll down to the Buildpack section click Add Buildpack select python and click Save Changes.
+10. Scroll to the top of the page and choose the **Deploy tab**.
+11. Select **Github** as the deployment method.
+15. Confirm you want to connect to GitHub.
+16. Search for the repository name and click the connect button.
+17. Scroll to the bottom of the deploy page and select the preferred deployment type.
+18. Click **Enable Automatic Deploys** for automatic deployment when you push updates to **Github**.<br>
+
+## Final Deployment
+
+1. Create a Procfile web: gunicorn **your_project_name**.wsgi
+2. When development is complete change the debug setting to: **DEBUG = False** in settings.py
+3. In this project the summernote editor was used so for this to work in Heroku add: **X_FRAME_OPTIONS = 'SAMEORIGIN'** to
+   settings.py.
+4. In Heroku settings config vars delete the record for **DISABLE_COLLECTSTATIC**.
+5. In Heroku settings config vars set the record for **USE_AWS** to **True**<br>
+
+<br>
+<br>
+
+# Credits
+
+### Content
+
+- All the products content were taken from [Amazon](https://www.amazon.com/)
+- The images were taken from [Aliexpress](https://www.aliexpress.com/)
+- The 2 videos used as a background on the Landing Page were taken from [Pexels](https://www.pexels.com/)
+- The Watches & Clocks logos and favicon are my own designed and build<br>
+
+### Information Sources / Resources
+
+- [W3Schools - Python](https://www.w3schools.com/python/)
+- [Stack Overflow](https://stackoverflow.com/)
+- [Scrimba - Pyhton](https://scrimba.com/learn/python)
+- [Code Institute - Slack Community](https://slack.com/)
+
+## Special Thanks
+
+- Special thanks to my mentor Sandeep Aggarwal, my colleagues at Code Institute, Kasia Bogucka, and Mairéad Gillic for
+  their assistance throughout this project.
